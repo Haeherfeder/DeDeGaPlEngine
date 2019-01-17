@@ -1,20 +1,11 @@
 package de.haeherfeder.DeDePlEngine.Shell;
 
-import java.awt.Frame;
-import java.awt.Label;
-import java.awt.Panel;
-import java.awt.TextField;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class GameWindow {
 		Config conf = new Config();
-		TextField tf1,tf2,tf3 = null;
-		Label l1,l2,l3 = null; 
-		Panel p1,p2,p3 = null;
-		Frame f = null;
-		String Text = null;
-		String tf1Text,tf2Text,tf3Text,tf1Fieldtext,tf2Fieldtext,tf3Fieldtext,PanelName,tf1Text2,tf2Text2,tf3Text2 = null;
+		String Text, tf1Text,tf2Text,tf3Text,tf1Fieldtext,tf2Fieldtext,tf3Fieldtext,PanelName,tf1Text2,tf2Text2,tf3Text2 = null;
 		int tf1Fieldlen,tf2Fieldlen,tf3Fieldlen,n;
 		Story story = new Story();
 		ConfigStory confStory = new ConfigStory();
@@ -130,5 +121,6 @@ public class GameWindow {
 			break;
 			}
 		}
+		return;
 	}
 }

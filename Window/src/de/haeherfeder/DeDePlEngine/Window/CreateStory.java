@@ -18,7 +18,7 @@ public class CreateStory {
 		FileReader read = new FileReader(Story);
 		p.load(read);
 		read.close();
-		setPr("FirstPosition","Start",p);
+		setPr("FirstP","Start",p);
 		setPr("Start"+"tf1"+"Text","Hallo, Herzlich Willkommen.",p);
 		setPr("Start"+"tf2"+"Text","Hallo, Feld2",p);
 		setPr("Start"+"tf3"+"Text","Hallo, Feld3",p);

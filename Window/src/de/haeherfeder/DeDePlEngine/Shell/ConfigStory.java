@@ -19,7 +19,7 @@ public class ConfigStory {
 		FileReader read = new FileReader(StoryConfig);
 		p.load(read);
 		read.close();
-		System.out.println("Storyconf "+p);
+//		System.out.println("Storyconf "+p);
 		return;
 	}
 	public String getText(String key){
