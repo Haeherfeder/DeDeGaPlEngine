@@ -1,6 +1,7 @@
 package de.haeherfeder.DeDePlEngine.Window;
+
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -26,19 +27,12 @@ public class CreateConfig {
 //		add Properties
 		props(p);
 		
-		FileWriter out = new FileWriter(config);
-		p.store(out," comments");
+		FileOutputStream out = new FileOutputStream(config);
+		p.storeToXML(out, null);
 		out.close();
 	}
 	private void setPr(String key,String vel,Properties p) {
-		if(p.getProperty(key)==null) {
-			p.setProperty(key, vel);
-			System.out.println(key + " wurde erstellt");
-			return;
-		}
-		System.out.println(key + " ist vorhanden " + p.getProperty(key));
+		p.setProperty(key, vel);
 		return;
 	}
-
-
 }

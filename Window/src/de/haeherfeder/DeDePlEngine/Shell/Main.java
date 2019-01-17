@@ -6,11 +6,6 @@ package de.haeherfeder.DeDePlEngine.Shell;
 import java.io.File;
 import java.io.IOException;
 
-import de.haeherfeder.DeDePlEngine.Window.Config;
-import de.haeherfeder.DeDePlEngine.Window.GameWindow;
-import de.haeherfeder.DeDePlEngine.Window.Plugin;
-import de.haeherfeder.DeDePlEngine.Window.Story;
-
 /**
  * @author benjamin
  *

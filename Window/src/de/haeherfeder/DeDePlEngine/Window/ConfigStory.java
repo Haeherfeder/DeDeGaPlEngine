@@ -34,5 +34,4 @@ public class ConfigStory {
 		int h = Integer.parseInt(vel);
 		return h;
 	}
-
 }

@@ -1,8 +1,8 @@
 package de.haeherfeder.DeDePlEngine.Shell;
 
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -36,8 +36,8 @@ public class Config {
 		}
 		
 //		Properties 1
-		FileReader read = new FileReader(config);
-		p.load(read);
+		FileInputStream read = new FileInputStream(config);
+		p.loadFromXML(read);
 		read.close();
 		
 //		if(!p.contains("e")) {p.setProperty("e", "1");
@@ -58,18 +58,18 @@ public class Config {
 		return;
 	}*/
 	public void setPr(String key,String vel) throws IOException {
-		FileWriter write = new FileWriter(config);
-		FileReader reader = new FileReader(config);
-		p.load(reader);
+		FileOutputStream write = new FileOutputStream(config);
+		FileInputStream reader = new FileInputStream(config);
+		p.loadFromXML(reader);
 		p.setProperty(key, vel);
 //			System.out.println(key + " wurde erstellt");
-		p.store(write, "neu value: "+vel);
+		p.storeToXML(write, "neu value: "+vel);
 		write.close();
 		reader.close();
 		return;
 	}
 	public String getProp(String key) throws IOException {
-		FileReader read = new FileReader(config);
+		FileInputStream read = new FileInputStream(config);
 		p.load(read);
 		read.close();
 //		System.out.println(key);
