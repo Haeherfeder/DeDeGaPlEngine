@@ -1,7 +1,7 @@
 package de.haeherfeder.DeDePlEngine.Shell;
 
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -16,8 +16,8 @@ public class ConfigStory {
 //		if(!StoryConfig.exists()) {new CreateConfigStory(StoryConfig,p);
 		new CreateConfigStory(StoryConfig,p);
 //		System.out.println("Storyconf "+p);
-		FileReader read = new FileReader(StoryConfig);
-		p.load(read);
+		FileInputStream read = new FileInputStream(StoryConfig);
+		p.loadFromXML(read);
 		read.close();
 //		System.out.println("Storyconf "+p);
 		return;
@@ -30,7 +30,7 @@ public class ConfigStory {
 		System.out.println(key);
 		String vel = p.getProperty(key);
 		if(vel==null) {return 5;}
-		System.out.println(vel);
+//		System.out.println(vel);
 		int h = Integer.parseInt(vel);
 		return h;
 	}

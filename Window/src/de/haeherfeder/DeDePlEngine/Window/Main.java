@@ -4,17 +4,16 @@ import java.io.File;
 import java.io.IOException;
 
 public class Main {
-
 	public static void main(String[] args) throws IOException {
 		if(!new File("./plugin").exists()) {new File("./plugin").mkdir();}
 		Plugin pl = new Plugin();
-		Story story = new Story();
 		Config conf = new Config();
 		conf.configFRSt();
-		String Position = story.getText("FirstP");
+		String Position = new Story().getText("FirstP");
+		pl.GameWindowStart(Position);
+		pl.setEngineVersion("Window");
 		new GameWindow(Position);
 		pl.stop();
 		System.exit(0);
 	}
-
 }

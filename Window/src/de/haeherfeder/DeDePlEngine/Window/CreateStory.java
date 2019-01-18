@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
+import de.haeherfeder.DeDePlEngine.Shell.SetPr;
+
 public class CreateStory {
 	public CreateStory(File Story,File StoryFolder,Properties p) throws IOException {
 		System.out.println("Create Story startet.");
@@ -35,12 +37,7 @@ public class CreateStory {
 		System.out.println("Geschrieben");
 	}
 	private void setPr(String key,String vel,Properties p) {
-			if(p.getProperty(key)==null) {
-				p.setProperty(key, vel);
-				System.out.println(key + " wurde erstellt");
-				return;
-			}
-			System.out.println(key + " ist vorhanden " + p.getProperty(key));
-			return;
+		new SetPr(key,vel,p);
+		return;
 	}
 }

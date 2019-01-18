@@ -14,6 +14,21 @@ public class Plugin {
 	      p.start();
 	    }
 	}
+    public void GameWindowStart(String Position) {
+    	for (IPlugin p : plugins) {
+    		p.GameWindowStart(Position);
+    	}
+    }
+    public void setEngineVersion(String Version) {
+    	for (IPlugin p : plugins) {
+    		p.setEngineVersion(Version);
+    	}
+    }
+    public void  PlayerInput(String Input) {
+    	for (IPlugin p : plugins) {
+    		p. PlayerInput(Input);
+    	}
+    }
     public void stop() {
     	for (IPlugin p : plugins) {
     		p.stop();
