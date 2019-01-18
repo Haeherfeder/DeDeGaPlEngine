@@ -12,7 +12,12 @@ public class CreateConfigStory {
 		}
 		config.createNewFile();
 		FileInputStream read = new FileInputStream(config);
-		p.loadFromXML(read);
+		try {
+			p.loadFromXML(read);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		read.close();
 		setPr("Start"+"tf1"+"Field"+"len","10",p);
 		setPr("Start"+"tf2"+"Field"+"len","1",p);

@@ -27,7 +27,7 @@ public class ConfigStory {
 		return vel;
 	}
 	public int getLen(String key){
-		System.out.println(key);
+//		System.out.println(key);
 		String vel = p.getProperty(key);
 		if(vel==null) {return 5;}
 //		System.out.println(vel);
