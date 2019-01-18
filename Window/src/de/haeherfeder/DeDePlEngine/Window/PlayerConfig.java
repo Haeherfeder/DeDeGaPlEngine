@@ -34,6 +34,4 @@ public class PlayerConfig {
 		write.close();
 		return;
 	}
-
-
 }

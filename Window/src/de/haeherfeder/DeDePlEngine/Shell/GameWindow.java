@@ -42,16 +42,14 @@ public class GameWindow {
 		case "ende":
 			return;
 		default:
-			break;}
-		FrameG(PanelName, n, tf1Fieldtext, tf1Text, tf2Fieldtext, tf2Text, tf3Fieldtext, tf3Text);
+			FrameG(PanelName, n, tf1Fieldtext, tf1Text, tf2Fieldtext, tf2Text, tf3Fieldtext, tf3Text);
 //			f.remove(p1);
 //			TextField tf2 = new TextField(Text);
 //		System.out.println("f");
-		Scanner scanner = new Scanner(System.in);
-		String Text = scanner.next();
-		System.out.println("Input :"+Text);
-		
-		
+			Scanner scanner = new Scanner(System.in);
+			String Text = scanner.next();
+			System.out.println("Input :"+Text);
+			
 //		scanner.close();
 /*		
 		int timesleep = conf.getInt("timesleep");
@@ -77,16 +75,15 @@ public class GameWindow {
 *			e.printStackTrace();
 *		}*/
 		
-		
-		if (story.getText(Position+"Next"+Text)==null) {
-			System.out.println("Way not defined");
-			new GameWindow(Position);
-		}else {
-			Position = story.getText(Position+"Next"+Text);
-			new GameWindow(Position);
-		}
-		scanner.close();
-		return;
+			if (story.getText(Position+"Next"+Text)==null) {
+				System.out.println("Way not defined");
+				new GameWindow(Position);
+			}else {
+				Position = story.getText(Position+"Next"+Text);
+				new GameWindow(Position);
+			}
+			scanner.close();
+		break;}	
 	}
 	public void FrameG(String Name,int n, String p1, String la1,String p2,String la2,String p3, String la3) {
 		for(int i = 0;i<n;i++) {

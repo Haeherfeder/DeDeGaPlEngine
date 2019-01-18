@@ -8,6 +8,13 @@ import java.util.Properties;
 
 public class CreateStory {
 	public CreateStory(File Story,File StoryFolder,Properties p) throws IOException {
+		
+		if(!Story.exists()) {
+//			System.out.println("Stroy exist"); 
+//			return;
+			System.out.println("Story file von CreateStory erstellt.");
+//		}
+		Story.createNewFile();}
 		FileReader read = new FileReader(Story);
 		p.load(read);
 		read.close();
@@ -18,8 +25,8 @@ public class CreateStory {
 		setPr("Start"+"tf1"+"Fieldtext","Hier Antwort eintragen",p);
 		setPr("Start"+"tf2"+"Fieldtext","",p);
 		setPr("Start"+"tf3"+"Fieldtext","",p);
-		setPr("Start"+"Next"+"A","Register",p);
-		setPr("Start"+"Next"+"default","Register",p);
+		setPr("Start"+"Next"+"A","ende",p);
+		setPr("Start"+"Next"+"default","Ende",p);
 		setPr("Start"+"tf3"+"Text","hi",p);
 		
 		FileWriter out = new FileWriter(Story);
@@ -27,7 +34,7 @@ public class CreateStory {
 		out.close();
 	}
 	private void setPr(String key,String vel,Properties p) {
-		new setPr(key,vel,p);
+		new SetPr(key,vel,p);
 		return;
 	}
 }

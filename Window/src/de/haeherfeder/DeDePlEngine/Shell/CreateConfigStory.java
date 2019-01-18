@@ -1,8 +1,8 @@
 package de.haeherfeder.DeDePlEngine.Shell;
 import java.util.Properties;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class CreateConfigStory {
@@ -11,19 +11,19 @@ public class CreateConfigStory {
 			return;
 		}
 		config.createNewFile();
-		FileReader read = new FileReader(config);
-		p.load(read);
+		FileInputStream read = new FileInputStream(config);
+		p.loadFromXML(read);
 		read.close();
 		setPr("Start"+"tf1"+"Field"+"len","10",p);
 		setPr("Start"+"tf2"+"Field"+"len","1",p);
 		setPr("Start"+"tf3"+"Field"+"len","1",p);
 		setPr("Start"+"nField","3",p);
-		FileWriter out = new FileWriter(config);
-		p.store(out, "comments");
+		FileOutputStream out = new FileOutputStream(config);
+		p.storeToXML(out, "comments");
 		out.close();
 	}
 	private void setPr(String key,String vel,Properties p){
-		new setPr(key,vel,p);
+		new SetPr(key,vel,p);
 		return;
 	}
 }

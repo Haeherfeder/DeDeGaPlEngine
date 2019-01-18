@@ -17,6 +17,7 @@ public class Story {
 	private Properties p = new Properties();
 	public Story() throws IOException {
 		if(!StoryFolder.exists()) {StoryFolder.mkdirs();}
+		if(!Story.exists()) {Story.createNewFile();}
 //		if(!Story.exists()) {
 			new CreateStory(Story,StoryFolder,p);
 //			System.out.println("Story wurde erstellt.");
