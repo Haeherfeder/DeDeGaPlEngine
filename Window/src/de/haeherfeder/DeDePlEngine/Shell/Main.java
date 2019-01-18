@@ -6,8 +6,6 @@ package de.haeherfeder.DeDePlEngine.Shell;
 import java.io.File;
 import java.io.IOException;
 
-import de.haeherfeder.DeDePlEngine.Window.Story;
-
 /**
  * @author benjamin
  *
@@ -25,7 +23,7 @@ public class Main {
 		conf.configFRSt();
 		String Position = new Story().getText("FirstP");
 		pl.GameWindowStart(Position);
-		pl.setEngineVersion("Window");
+		pl.setEngineVersion("Shell");
 		new GameWindow(Position);
 		System.out.println("Exit");
 		pl.stop();
