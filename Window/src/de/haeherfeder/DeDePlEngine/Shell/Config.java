@@ -2,8 +2,10 @@ package de.haeherfeder.DeDePlEngine.Shell;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
 
 public class Config {
@@ -68,20 +70,28 @@ public class Config {
 		reader.close();
 		return;
 	}
-	public String getProp(String key) throws IOException {
-		FileInputStream read = new FileInputStream(config);
-		p.load(read);
-		read.close();
-//		System.out.println(key);
-//		System.out.println(p.getProperty(key));
+	public String getProp(String key) {
+		try {
+			FileInputStream read = new FileInputStream(config);
+			p.loadFromXML(read);
+			read.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (InvalidPropertiesFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println(key);
+		System.out.println(p.getProperty(key));
 		if(p.getProperty(key)==null) {return "not defined";}
 		return p.getProperty(key);
 	}
 	public int getInt(String key){
-		String vel = p.getProperty(key);
-		if(vel==null) {
+		String vel = getProp(key);
+		if(vel=="not defined") {
 			if (key=="default") {
-				return 20;
+				return 5;
 			}
 		return getInt("default");
 		}

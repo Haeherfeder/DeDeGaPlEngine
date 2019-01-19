@@ -111,4 +111,4 @@ public class GameWindow {
 		TextField tf = new TextField(text,len);
 		return tf;
 	}
-}
+}	

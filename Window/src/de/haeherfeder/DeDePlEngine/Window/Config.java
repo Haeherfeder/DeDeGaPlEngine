@@ -1,9 +1,11 @@
 package de.haeherfeder.DeDePlEngine.Window;
 
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
 
 public class Config {
@@ -36,8 +38,8 @@ public class Config {
 		}
 		
 //		Properties 1
-		FileReader read = new FileReader(config);
-		p.load(read);
+		FileInputStream read = new FileInputStream(config);
+		p.loadFromXML(read);
 		read.close();
 		
 //		if(!p.contains("e")) {p.setProperty("e", "1");
@@ -58,21 +60,21 @@ public class Config {
 		return;
 	}*/
 	public void setPr(String key,String vel) throws IOException {
-		FileWriter write = new FileWriter(config);
-		FileReader reader = new FileReader(config);
+		FileInputStream reader = new FileInputStream(config);
+		FileOutputStream write = new FileOutputStream(config);
 		if(p.getProperty(key)==null) {
-			p.load(reader);
+			p.loadFromXML(reader);
 			p.setProperty(key, vel);
 			System.out.println(key + " wurde erstellt");
-			p.store(write, "neu value: "+vel);
+			p.storeToXML(write, "neu value: "+vel);
 			write.close();
 			reader.close();
 			return;
 		}
 		if(key=="CurrentPlayer") {
-			p.load(reader);
+			p.loadFromXML(reader);
 			p.setProperty(key, vel);
-			p.store(write, "comments");
+			p.storeToXML(write, "comments");
 			write.close();
 			reader.close();
 			return;
@@ -82,18 +84,26 @@ public class Config {
 		reader.close();
 		return;
 	}
-	public String getProp(String key) throws IOException {
-		FileReader read = new FileReader(config);
-		p.load(read);
-		read.close();
+	public String getProp(String key) {
+		try {
+			FileInputStream read = new FileInputStream(config);
+			p.loadFromXML(read);
+			read.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (InvalidPropertiesFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		System.out.println(key);
 		System.out.println(p.getProperty(key));
 		if(p.getProperty(key)==null) {return "not defined";}
 		return p.getProperty(key);
 	}
 	public int getInt(String key){
-		String vel = p.getProperty(key);
-		if(vel==null) {
+		String vel = getProp(key);
+		if(vel=="not defined") {
 			if (key=="default") {
 				return 5;
 			}
@@ -102,5 +112,4 @@ public class Config {
 		int h = Integer.parseInt(vel);
 		return h;
 	}
-
 }
