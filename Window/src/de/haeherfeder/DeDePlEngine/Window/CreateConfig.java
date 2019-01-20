@@ -24,9 +24,7 @@ public class CreateConfig {
 			if(config.length()==0) { return;}
 		}
 		if(!config.exists()) 	{config.createNewFile();}
-//		add Properties
 		props(p);
-		
 		FileOutputStream out = new FileOutputStream(config);
 		p.storeToXML(out, null);
 		out.close();

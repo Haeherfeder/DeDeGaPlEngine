@@ -14,7 +14,7 @@ public class ConfigStory {
 //		System.out.println("Storyconfgen");
 		if(!StoryFolder.exists()) {StoryFolder.mkdirs();}
 //		if(!StoryConfig.exists()) {new CreateConfigStory(StoryConfig,p);
-		new CreateConfigStory(StoryConfig,p);
+		new CreateConfigStory(p);
 //		System.out.println("Storyconf "+p);
 		FileInputStream read = new FileInputStream(StoryConfig);
 		p.loadFromXML(read);
