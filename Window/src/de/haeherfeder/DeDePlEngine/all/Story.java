@@ -26,9 +26,6 @@ public class Story {
 		p.load(read);
 		read.close();
 	}
-	public String f(){
-		return "fqw";
-	}
 	public String getText(String key) throws IOException{
 		FileReader read = new FileReader(Story);
 		p.load(read);

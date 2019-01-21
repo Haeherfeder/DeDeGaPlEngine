@@ -61,13 +61,19 @@ public class Config {
 	}*/
 	public void setPr(String key,String vel) throws IOException {
 		FileOutputStream write = new FileOutputStream(config);
-		FileInputStream reader = new FileInputStream(config);
-		p.loadFromXML(reader);
+		FileInputStream reader;
+		try {
+			reader = new FileInputStream(config);
+			p.loadFromXML(reader);
+			reader.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		p.setProperty(key, vel);
 //			System.out.println(key + " wurde erstellt");
 		p.storeToXML(write, "neu value: "+vel);
 		write.close();
-		reader.close();
 		return;
 	}
 	public String getProp(String key) {

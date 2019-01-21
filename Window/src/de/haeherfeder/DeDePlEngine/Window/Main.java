@@ -3,7 +3,7 @@ package de.haeherfeder.DeDePlEngine.Window;
 import java.io.File;
 import java.io.IOException;
 
-import de.haeherfeder.DeDePlEngine.all.Config;
+import de.haeherfeder.DeDePlEngine.all.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
