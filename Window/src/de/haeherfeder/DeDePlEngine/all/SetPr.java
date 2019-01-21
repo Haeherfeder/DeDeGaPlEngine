@@ -1,4 +1,4 @@
-package de.haeherfeder.DeDePlEngine.Shell;
+package de.haeherfeder.DeDePlEngine.all;
 
 import java.util.Properties;
 

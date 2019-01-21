@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
-import de.haeherfeder.DeDePlEngine.Shell.SetPr;
+import de.haeherfeder.DeDePlEngine.all.SetPr;
 
 public class CreateStory {
 	public CreateStory(File Story,File StoryFolder,Properties p) throws IOException {

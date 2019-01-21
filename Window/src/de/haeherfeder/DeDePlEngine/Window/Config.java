@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
 
+import de.haeherfeder.DeDePlEngine.Window.CreateConfig;
+import de.haeherfeder.DeDePlEngine.Window.Story;
+
 public class Config {
 	private Properties p = new Properties();
 //	Files

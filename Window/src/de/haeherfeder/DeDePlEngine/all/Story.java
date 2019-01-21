@@ -1,5 +1,5 @@
 
-package de.haeherfeder.DeDePlEngine.Shell;
+package de.haeherfeder.DeDePlEngine.all;
 
 import java.io.File;
 import java.io.FileReader;
