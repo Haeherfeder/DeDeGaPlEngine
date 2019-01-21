@@ -1,4 +1,4 @@
-package de.haeherfeder.DeDePlEngine.Window;
+package de.haeherfeder.DeDePlEngine.all;
 
 public interface IPluginManager {
 	void showVisualMessage(String message);

@@ -3,6 +3,10 @@ package de.haeherfeder.DeDePlEngine.Shell;
 import java.io.IOException;
 import java.util.Scanner;
 
+import de.haeherfeder.DeDePlEngine.all.Config;
+import de.haeherfeder.DeDePlEngine.all.ConfigStory;
+import de.haeherfeder.DeDePlEngine.all.Story;
+
 public class GameWindow {
 		Config conf = new Config();
 		String Text, tf1Text,tf2Text,tf3Text,tf1Fieldtext,tf2Fieldtext,tf3Fieldtext,PanelName,tf1Text2,tf2Text2,tf3Text2 = null;

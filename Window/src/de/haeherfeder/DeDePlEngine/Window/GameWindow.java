@@ -7,6 +7,8 @@ import java.awt.TextField;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import de.haeherfeder.DeDePlEngine.all.*;
+
 public class GameWindow {
 		Config conf = new Config();
 		TextField tf1,tf2,tf3 = null;

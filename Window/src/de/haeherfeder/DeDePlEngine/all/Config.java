@@ -1,4 +1,4 @@
-package de.haeherfeder.DeDePlEngine.Window;
+package de.haeherfeder.DeDePlEngine.all;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -44,8 +44,8 @@ public class Config {
 		
 //		if(!p.contains("e")) {p.setProperty("e", "1");
 //			System.out.println("e nicht vorhanden.");}
-		System.out.println(p);
-		System.out.println(config);
+//		System.out.println(p);
+//		System.out.println(config);
 		return;
 	}
 	/*public void setPr(String key,String vel,Properties p) throws IOException {
@@ -53,35 +53,27 @@ public class Config {
 		p.load(reader);
 		FileWriter write = new FileWriter(config);
 		p.setProperty(key, vel);
-		System.out.println(key + " wurde erstellt");
+//			System.out.println(key + " wurde erstellt");
 		p.store(write, "neu value: "+vel);
 		write.close();
 		reader.close();
 		return;
 	}*/
 	public void setPr(String key,String vel) throws IOException {
-		FileInputStream reader = new FileInputStream(config);
 		FileOutputStream write = new FileOutputStream(config);
-		if(p.getProperty(key)==null) {
+		FileInputStream reader;
+		try {
+			reader = new FileInputStream(config);
 			p.loadFromXML(reader);
-			p.setProperty(key, vel);
-			System.out.println(key + " wurde erstellt");
-			p.storeToXML(write, "neu value: "+vel);
-			write.close();
 			reader.close();
-			return;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		if(key=="CurrentPlayer") {
-			p.loadFromXML(reader);
-			p.setProperty(key, vel);
-			p.storeToXML(write, "comments");
-			write.close();
-			reader.close();
-			return;
-		}
-		System.out.println(key + " ist vorhanden " + p.getProperty(key));
+		p.setProperty(key, vel);
+//			System.out.println(key + " wurde erstellt");
+		p.storeToXML(write, "neu value: "+vel);
 		write.close();
-		reader.close();
 		return;
 	}
 	public String getProp(String key) {
