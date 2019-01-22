@@ -29,7 +29,7 @@ public class Main {
 		pl.GameWindowStart(Position);
 		pl.setEngineVersion("Shell");
 		GameWindow gamewindow = new GameWindow(Position);
-		while("Ende".equalsIgnoreCase(Position)) {
+		while(!("Ende".equalsIgnoreCase(Position))) {
 		
 		Position = gamewindow.GameWindo(Position);
 		
