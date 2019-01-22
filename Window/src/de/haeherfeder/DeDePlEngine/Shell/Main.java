@@ -28,17 +28,22 @@ public class Main {
 		Position = new Story().getText("FirstP");
 		pl.GameWindowStart(Position);
 		pl.setEngineVersion("Shell");
-		GameWindow gamewindow = new GameWindow(Position);
-		while(!("Ende".equalsIgnoreCase(Position))) {
-		
-		Position = gamewindow.GameWindo(Position);
-		
-		}
+
+		new Main(Position);
 		System.out.println("Exit");
 		pl.stop();
 		System.exit(0);
 	}
 	public void setPosition(String NewPos) {
 		Position = NewPos;
+	}
+	public Main(String Position) throws IOException {
+		GameWindow gamewindow = new GameWindow(Position);
+		while(!("Ende".equalsIgnoreCase(Position))) {
+			Position = gamewindow.GameWindo(Position);	
+		}
+	}
+	public Main() {
+		
 	}
 }

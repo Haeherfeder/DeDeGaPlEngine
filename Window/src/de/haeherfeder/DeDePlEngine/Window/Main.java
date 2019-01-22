@@ -3,6 +3,7 @@ package de.haeherfeder.DeDePlEngine.Window;
 import java.io.File;
 import java.io.IOException;
 
+import de.haeherfeder.DeDePlEngine.Shell.GameWindow;
 import de.haeherfeder.DeDePlEngine.all.*;
 
 public class Main {
@@ -17,14 +18,20 @@ public class Main {
 		Position = new Story().getText("FirstP");
 		pl.GameWindowStart(Position);
 		pl.setEngineVersion("Window");
-		GameWindow gamewindow = new GameWindow(Position);
-		while(!("Ende".equalsIgnoreCase(Position))) {
-			Position = gamewindow.GameWindo(Position);
-		}
+		new Main(Position);
 		pl.stop();
 		System.exit(0);
 	}
 	public void setPosition(String NewPos) {
 		Position = NewPos;
+	}
+	public Main(String Position) throws IOException {
+		GameWindow gamewindow = new GameWindow(Position);
+		while(!("Ende".equalsIgnoreCase(Position))) {
+			Position = gamewindow.GameWindo(Position);	
+		}
+	}
+	public Main() {
+		
 	}
 }

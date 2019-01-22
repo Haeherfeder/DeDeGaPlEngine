@@ -13,6 +13,7 @@ public class GameWindow {
 		int tf1Fieldlen,tf2Fieldlen,tf3Fieldlen,n;
 		Story story = new Story();
 		ConfigStory confStory = new ConfigStory();
+		boolean fals = false;
 		
 	public GameWindow(String Position) throws IOException {}
 	public String GameWindo(String Position) throws IOException {
@@ -50,7 +51,6 @@ public class GameWindow {
 			/*
 			 * 
 			 */
-			boolean fals = false;
 			if(fals) 
 			{
 				return "Ende";
@@ -131,5 +131,8 @@ public class GameWindow {
 			}
 		}
 		return;
+	}
+	public void setEnd(boolean End) {
+		fals = End;
 	}
 }

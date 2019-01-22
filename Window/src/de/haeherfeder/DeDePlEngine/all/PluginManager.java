@@ -24,17 +24,16 @@ public class PluginManager implements IPluginManager {
 		try {
 			switch(conf.getProp("CurrentMode")) {
 			case "Shell":
-				new de.haeherfeder.DeDePlEngine.Shell.GameWindow(Position);
-				break;
+				new de.haeherfeder.DeDePlEngine.Shell.Main(Position);
 			case "Window":
-				new de.haeherfeder.DeDePlEngine.Window.GameWindow(Position);
-				break;
+				new de.haeherfeder.DeDePlEngine.Window.Main(Position);
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(1);
 		}
+		return;
 	}
 	public void setStartPosition(String Position) {
 		switch(conf.getProp("CurrentMode")) {
@@ -45,5 +44,20 @@ public class PluginManager implements IPluginManager {
 			new de.haeherfeder.DeDePlEngine.Window.Main().setPosition(Position);
 			break;
 		}
+	}
+	public String SinglePosition(String Position) {
+		try {
+			switch(conf.getProp("CurrentMode")) {
+			case "Shell":
+				return new de.haeherfeder.DeDePlEngine.Shell.GameWindow(Position).GameWindo(Position);
+			case "Window":
+				return new de.haeherfeder.DeDePlEngine.Window.GameWindow(Position).GameWindo(Position);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.exit(1);
+		}
+		return "";
 	}
 }
