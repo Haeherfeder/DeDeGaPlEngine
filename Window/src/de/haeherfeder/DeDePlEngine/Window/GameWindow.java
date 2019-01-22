@@ -21,7 +21,8 @@ public class GameWindow {
 		Story story = new Story();
 		ConfigStory confStory = new ConfigStory();
 		FrameManager Frame = new FrameManager();
-	public GameWindow(String Position) throws IOException{
+	public GameWindow(String Position) throws IOException{}
+	public String GameWindo(String Position) throws IOException{
 		tf1Text = story.getText(Position + "tf1Text");
 		tf2Text = story.getText(Position + "tf2Text");
 		tf3Text = story.getText(Position + "tf3Text");
@@ -51,7 +52,7 @@ public class GameWindow {
 		switch(Position) {
 		case "Ende":
 		case "ende":
-			return;
+			return "Ende";
 		default:
 			break;}
 		f = Frame.setFrame(PanelName, h, b, n, p1, l1, p2, l2, p3, l3);
@@ -94,15 +95,13 @@ public class GameWindow {
 			System.out.println("Way not defined");
 			f.removeAll();
 			f.setVisible(false);
-			new GameWindow(Position);
+			return Position;
 		}else {
 			f.removeAll();
 			f.setVisible(false);
 			Position = story.getText(Position+"Next"+Text);
-			new GameWindow(Position);
+			return(Position);
 		}
-		
-		return;
 	}
 	public TextArea LabelG(String Namela) {
 		TextArea la = new TextArea(Namela);

@@ -36,4 +36,14 @@ public class PluginManager implements IPluginManager {
 			System.exit(1);
 		}
 	}
+	public void setStartPosition(String Position) {
+		switch(conf.getProp("CurrentMode")) {
+		case "Shell":
+			new de.haeherfeder.DeDePlEngine.Shell.Main().setPosition(Position);
+			break;
+		case "Window":
+			new de.haeherfeder.DeDePlEngine.Window.Main().setPosition(Position);
+			break;
+		}
+	}
 }

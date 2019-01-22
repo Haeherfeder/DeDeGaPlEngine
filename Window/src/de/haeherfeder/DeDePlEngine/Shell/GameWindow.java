@@ -14,7 +14,8 @@ public class GameWindow {
 		Story story = new Story();
 		ConfigStory confStory = new ConfigStory();
 		
-	public GameWindow(String Position) throws IOException {
+	public GameWindow(String Position) throws IOException {}
+	public String GameWindo(String Position) throws IOException {
 		tf1Text = story.getText(Position + "tf1Text");
 		tf2Text = story.getText(Position + "tf2Text");
 		tf3Text = story.getText(Position + "tf3Text");
@@ -44,9 +45,16 @@ public class GameWindow {
 		switch(Position) {
 		case "Ende":
 		case "ende":
-			return;
+			return "Ende";
 		default:
-			if(false) {return;}
+			/*
+			 * 
+			 */
+			boolean fals = false;
+			if(fals) 
+			{
+				return "Ende";
+			}
 			FrameG(PanelName, n, tf1Fieldtext, tf1Text, tf2Fieldtext, tf2Text, tf3Fieldtext, tf3Text);
 //			f.remove(p1);
 //			TextField tf2 = new TextField(Text);
@@ -82,13 +90,12 @@ public class GameWindow {
 		
 			if (story.getText(Position+"Next"+Text)==null) {
 				System.out.println("Way not defined");
-				new GameWindow(Position);
+				return Position;
 			}else {
 				Position = story.getText(Position+"Next"+Text);
-				new GameWindow(Position);
-			}
-			scanner.close();
-		break;}	
+				return Position;
+			}	
+		}
 	}
 	public void FrameG(String Name,int n, String p1, String la1,String p2,String la2,String p3, String la3) {
 		for(int i = 0;i<n;i++) {
