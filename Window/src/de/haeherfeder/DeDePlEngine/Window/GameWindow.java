@@ -80,8 +80,7 @@ public class GameWindow {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		f.removeAll();
-		f.setVisible(false);
+
 		System.out.println("Position: "+Position);
 //		boolean hi = Position!="Start";
 		System.out.println(Position+"Next"+Text);
@@ -90,9 +89,15 @@ public class GameWindow {
 		
 		
 		if (story.getText(Position+"Next"+Text)==null) {
+			tf1.setText("Way not defined");
+			
 			System.out.println("Way not defined");
+			f.removeAll();
+			f.setVisible(false);
 			new GameWindow(Position);
 		}else {
+			f.removeAll();
+			f.setVisible(false);
 			Position = story.getText(Position+"Next"+Text);
 			new GameWindow(Position);
 		}
@@ -102,6 +107,7 @@ public class GameWindow {
 	public TextArea LabelG(String Namela) {
 		TextArea la = new TextArea(Namela);
 		la.setEditable(false);
+		la.setFocusable(false);
 		return la;
 	}
 	public Panel PanelG(TextField tf) {

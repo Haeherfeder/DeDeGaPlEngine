@@ -46,6 +46,7 @@ public class GameWindow {
 		case "ende":
 			return;
 		default:
+			if(false) {return;}
 			FrameG(PanelName, n, tf1Fieldtext, tf1Text, tf2Fieldtext, tf2Text, tf3Fieldtext, tf3Text);
 //			f.remove(p1);
 //			TextField tf2 = new TextField(Text);
@@ -98,21 +99,21 @@ public class GameWindow {
 			break;
 			case 1:	
 //				f.add(la1);
-				System.out.println(la1);
+				System.out.print(la1);
 //				f.add(p1);
 				System.out.println(p1);
 //				System.out.println("case 1");
 			break;
 			case 2:
 //				f.add(la2);
-				System.out.println(la2);
+				System.out.print(la2);
 //				f.add(p2);
 				System.out.println(p2);
 //				System.out.println("case 2");
 			break;
 			case 3:
 //				f.add(la3);
-				System.out.println(la3);
+				System.out.print(la3);
 //				f.add(p3);
 				System.out.println(p3);
 //				System.out.println("case 3");
