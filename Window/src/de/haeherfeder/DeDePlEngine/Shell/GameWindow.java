@@ -3,11 +3,10 @@ package de.haeherfeder.DeDePlEngine.Shell;
 import java.io.IOException;
 import java.util.Scanner;
 
-import de.haeherfeder.DeDePlEngine.all.Config;
-import de.haeherfeder.DeDePlEngine.all.ConfigStory;
-import de.haeherfeder.DeDePlEngine.all.Story;
+import de.haeherfeder.DeDePlEngine.all.*;
 
 public class GameWindow {
+		Plugin pl = new Plugin();
 		Config conf = new Config();
 		String Text, tf1Text,tf2Text,tf3Text,tf1Fieldtext,tf2Fieldtext,tf3Fieldtext,PanelName,tf1Text2,tf2Text2,tf3Text2 = null;
 		int tf1Fieldlen,tf2Fieldlen,tf3Fieldlen,n;
@@ -62,7 +61,7 @@ public class GameWindow {
 			Scanner scanner = new Scanner(System.in);
 			String Text = scanner.next();
 			System.out.println("Input :"+Text);
-			
+			pl.PlayerInput(Text, Position);
 //		scanner.close();
 /*		
 		int timesleep = conf.getInt("timesleep");

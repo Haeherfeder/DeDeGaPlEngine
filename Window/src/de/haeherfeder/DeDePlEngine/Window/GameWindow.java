@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import de.haeherfeder.DeDePlEngine.all.*;
 
 public class GameWindow {
+		Plugin pl = new Plugin();
 		Config conf = new Config();
 		TextField tf1,tf2,tf3 = null;
 		TextArea l1,l2,l3 = null; 
@@ -74,6 +75,8 @@ public class GameWindow {
 		}
 		}
 		Text = tf1.getText();
+		pl.PlayerInput(Text,Position);
+		
 		System.out.println("Text: " + Text);
 		conf.getProp("key");
 		try {

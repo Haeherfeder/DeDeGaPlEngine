@@ -24,9 +24,9 @@ public class Plugin {
     		p.setEngineVersion(Version);
     	}
     }
-    public void  PlayerInput(String Input) {
+    public void  PlayerInput(String Input, String position) {
     	for (IPlugin p : plugins) {
-    		p. PlayerInput(Input);
+    		p. PlayerInput(Input,position);
     	}
     }
     public void stop() {
