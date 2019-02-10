@@ -3,7 +3,6 @@ package de.haeherfeder.DeDePlEngine.Window;
 import java.io.File;
 import java.io.IOException;
 
-import de.haeherfeder.DeDePlEngine.Shell.GameWindow;
 import de.haeherfeder.DeDePlEngine.all.*;
 
 public class Main {

@@ -33,9 +33,9 @@ public class GameWindow {
 		tf2Fieldtext = story.getText(Position + "tf2Fieldtext");
 		tf3Fieldtext = story.getText(Position + "tf3Fieldtext");
 		PanelName = story.getText(Position+"PanelName");
-		tf1Fieldlen = confStory.getLen(Position + "tf1Fieldlen");
-		tf2Fieldlen = confStory.getLen(Position + "tf2Fieldlen");
-		tf3Fieldlen = confStory.getLen(Position + "tf3Fieldlen");
+		tf1Fieldlen = 10;
+		tf2Fieldlen = 1;
+		tf3Fieldlen = 1;
 		n = confStory.getLen(Position+"nField");
 		int b,h;
 		b = conf.getInt("width");
