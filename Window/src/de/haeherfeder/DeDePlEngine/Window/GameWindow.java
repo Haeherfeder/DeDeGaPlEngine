@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import de.haeherfeder.DeDePlEngine.all.*;
 
 public class GameWindow {
-		Plugin pl = new Plugin();
+		Plugin pl;
 		Config conf = new Config();
 		TextField tf1,tf2,tf3 = null;
 		TextArea l1,l2,l3 = null; 
@@ -25,6 +25,7 @@ public class GameWindow {
 	public GameWindow(String Position) throws IOException{}
 	public GameWindow() throws IOException{}
 	public String GameWindo(String Position) throws IOException{
+		pl = new Plugin();
 		tf1Text = story.getText(Position + "tf1Text");
 		tf2Text = story.getText(Position + "tf2Text");
 		tf3Text = story.getText(Position + "tf3Text");

@@ -6,7 +6,7 @@ import java.util.Scanner;
 import de.haeherfeder.DeDePlEngine.all.*;
 
 public class GameWindow {
-		Plugin pl = new Plugin();
+		Plugin pl;
 		Config conf = new Config();
 		String Text, tf1Text,tf2Text,tf3Text,tf1Fieldtext,tf2Fieldtext,tf3Fieldtext,PanelName,tf1Text2,tf2Text2,tf3Text2 = null;
 		int tf1Fieldlen,tf2Fieldlen,tf3Fieldlen,n;
@@ -17,6 +17,7 @@ public class GameWindow {
 	public GameWindow(String Position) throws IOException {}
 	public GameWindow() throws IOException{}
 	public String GameWindo(String Position) throws IOException {
+		pl = new Plugin();
 		tf1Text = story.getText(Position + "tf1"+"Text");
 		tf2Text = story.getText(Position + "tf2"+"Text");
 		tf3Text = story.getText(Position + "tf3"+"Text");
