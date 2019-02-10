@@ -34,4 +34,10 @@ public class Plugin {
     		p.stop();
     	}
     }
+	public void sendPosition(String position) {
+		// TODO Auto-generated method stub
+		for (IPlugin p : plugins) {
+    		p.sendPosition(position);
+    	} 
+	}
 }

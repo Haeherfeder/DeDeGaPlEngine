@@ -8,4 +8,5 @@ public interface IPlugin {
 	void PlayerInput(String Input, String position);
 	void GameStart();
 	boolean setEngineVersion(String Version);
+	void sendPosition(String position);
 }

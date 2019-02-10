@@ -38,6 +38,8 @@ public class GameWindow {
 		int b,h;
 		b = conf.getInt("width");
 		h = conf.getInt("hight");
+		Plugin pl = new Plugin();
+		pl.sendPosition(Position);
 		/*
 		b = 800;
 		h = 400;*/
@@ -120,5 +122,38 @@ public class GameWindow {
 	public TextField TextFieldG(String text, int len) {
 		TextField tf = new TextField(text,len);
 		return tf;
+	}
+	public void settf1Text(String tf1Text) {
+		this.tf1Text = tf1Text;
+	}
+	public void settf2Text(String tf2Text) {
+		this.tf2Text = tf2Text;
+	}
+	public void settf3Text(String tf3Text) {
+		this.tf3Text = tf3Text;
+	}
+	public void settf1Fieldtext(String tf1Fieldtext) {
+		this.tf1Fieldtext = tf1Fieldtext;
+	}
+	public void settf2Fieldtext(String tf2Fieldtext) {
+		this.tf2Fieldtext = tf2Fieldtext;
+	}
+	public void settf3Fieldtext(String tf3Fieldtext) {
+		this.tf3Fieldtext = tf3Fieldtext;
+	}
+	public void setPanelName(String PanelName) {
+		this.PanelName = PanelName;
+	}
+	public void settf1Fieldlen(int len) {
+		this.tf1Fieldlen = len;
+	}
+	public void settf2Fieldlen(int len) {
+		this.tf2Fieldlen = len;
+	}
+	public void settf3Fieldlen(int len) {
+		this.tf3Fieldlen = len;
+	}
+	public void setFields(int len) {
+		this.n = len;
 	}
 }	

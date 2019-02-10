@@ -4,7 +4,6 @@ import java.io.IOException;
 
 public class PluginManager implements IPluginManager {
 	Config conf = new Config();
-	
 	public void showVisualMessage(String message) {
 		System.out.println(message);
 	}
@@ -59,5 +58,18 @@ public class PluginManager implements IPluginManager {
 			System.exit(1);
 		}
 		return "";
+	}
+	public String getconf(String key) {
+		return conf.getProp(key);
+	}
+	public String getStory(String key) {
+		try {
+			Story story = new Story();
+			return story.getText(key);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
 	}
 }
