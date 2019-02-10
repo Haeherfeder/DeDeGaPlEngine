@@ -15,6 +15,7 @@ public class GameWindow {
 		boolean fals = false;
 		
 	public GameWindow(String Position) throws IOException {}
+	public GameWindow() throws IOException{}
 	public String GameWindo(String Position) throws IOException {
 		tf1Text = story.getText(Position + "tf1"+"Text");
 		tf2Text = story.getText(Position + "tf2"+"Text");

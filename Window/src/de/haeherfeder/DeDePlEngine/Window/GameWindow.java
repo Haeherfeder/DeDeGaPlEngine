@@ -23,6 +23,7 @@ public class GameWindow {
 		ConfigStory confStory = new ConfigStory();
 		FrameManager Frame = new FrameManager();
 	public GameWindow(String Position) throws IOException{}
+	public GameWindow() throws IOException{}
 	public String GameWindo(String Position) throws IOException{
 		tf1Text = story.getText(Position + "tf1Text");
 		tf2Text = story.getText(Position + "tf2Text");

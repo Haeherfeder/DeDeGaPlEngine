@@ -3,6 +3,19 @@ package de.haeherfeder.DeDePlEngine.all;
 import java.io.IOException;
 
 public class PluginManager implements IPluginManager {
+	de.haeherfeder.DeDePlEngine.Shell.GameWindow Shell;
+	de.haeherfeder.DeDePlEngine.Window.GameWindow Window;
+	
+	public PluginManager() {
+		try {
+			Shell = new de.haeherfeder.DeDePlEngine.Shell.GameWindow();
+			Window = new de.haeherfeder.DeDePlEngine.Window.GameWindow();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	Config conf = new Config();
 	public void showVisualMessage(String message) {
 		System.out.println(message);
@@ -48,9 +61,9 @@ public class PluginManager implements IPluginManager {
 		try {
 			switch(conf.getProp("CurrentMode")) {
 			case "Shell":
-				return new de.haeherfeder.DeDePlEngine.Shell.GameWindow(Position).GameWindo(Position);
+				return Shell.GameWindo(Position);
 			case "Window":
-				return new de.haeherfeder.DeDePlEngine.Window.GameWindow(Position).GameWindo(Position);
+				return Window.GameWindo(Position);
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -71,5 +84,101 @@ public class PluginManager implements IPluginManager {
 			e.printStackTrace();
 		} 
 		return null;
+	}
+
+	@Override
+	public void setText(String WhichText, String Text) {
+		switch(conf.getProp("CurrentMode")) 
+		{
+			case "Shell":
+				switch(WhichText) 
+				{
+					case "tf1Text":
+						Shell.settf1Text(Text);
+						break;
+					case "tf2Text":
+						Shell.settf2Text(Text);
+						break;
+					case "tf3Text":
+						Shell.settf3Text(Text);
+						break;
+					case "tf1Fieldtext":
+						Shell.settf1Fieldtext(Text);
+						break;
+					case "tf2Fieldtext":
+						Shell.settf2Fieldtext(Text);
+						break;
+					case "tf3Fieldtext":
+						Shell.settf3Fieldtext(Text);
+						break;
+					case "PanelName":
+						Shell.setPanelName(Text);
+						break;
+					default: 
+						break;
+				}
+				break;
+			case "Window":
+				switch(WhichText) 
+				{
+					case "tf1Text":
+						Window.settf1Text(Text);
+						break;
+					case "tf2Text":
+						Window.settf2Text(Text);
+						break;
+					case "tf3Text":
+						Window.settf3Text(Text);
+						break;
+					case "tf1Fieldtext":
+						Window.settf1Fieldtext(Text);
+						break;
+					case "tf2Fieldtext":
+						Window.settf2Fieldtext(Text);
+						break;
+					case "tf3Fieldtext":
+						Window.settf3Fieldtext(Text);
+						break;
+					case "PanelName":
+						Window.setPanelName(Text);
+						break;
+					default: 
+						break;
+				}
+			break;
+		}
+	}
+
+	@Override
+	public void setInt(String Which, int vel) {
+		// TODO Auto-generated method stub
+		switch(conf.getProp("CurrentMode")) {
+		case "Shell":
+			switch(Which) {
+			case "tf1Fieldlen":
+				break;
+			case "tf2Fieldlen":
+				break;
+			case "tf3Fieldlen":
+				break;
+			case "fields":
+				break;
+		}
+		case "Window":
+			switch(Which) {
+			case "tf1Fieldlen":
+				Window.settf1Fieldlen(vel);
+				break;
+			case "tf2Fieldlen":
+				Window.settf2Fieldlen(vel);
+				break;
+			case "tf3Fieldlen":
+				Window.settf3Fieldlen(vel);
+				break;
+			case "fields":
+				Window.setFields(vel);
+				break;
+			}
+		}
 	}
 }

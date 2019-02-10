@@ -8,4 +8,6 @@ public interface IPluginManager {
 	public String SinglePosition(String Position);
 	public String getconf(String key);
 	public String getStory(String key);
+	public void setText(String WhichText,String Text);
+	public void setInt(String Which, int vel);
 }
