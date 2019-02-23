@@ -181,4 +181,7 @@ public class PluginManager implements IPluginManager {
 			}
 		}
 	}
+	public void DoNotEnde() {
+		
+	}
 }

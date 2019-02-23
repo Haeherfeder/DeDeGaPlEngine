@@ -5,14 +5,21 @@ import java.util.List;
 
 public class Plugin {
 	List<IPlugin> plugins = PluginLoader.loadPlugins(new File("./plugin"));
-    PluginManager manager = new PluginManager();
+    PluginManager manager;
 	public  Plugin() throws IOException {
+		manager = new PluginManager();
 	    for (IPlugin p : plugins) {
 	      p.setPluginManager(manager);
 	    }
 	    for (IPlugin p : plugins) {
 	      p.start();
 	    }
+	}
+	public Plugin(String string)throws IOException{
+		manager = new PluginManager();
+		for (IPlugin p : plugins) {
+			p.setPluginManager(manager);
+		}
 	}
     public void GameWindowStart(String Position) {
     	for (IPlugin p : plugins) {

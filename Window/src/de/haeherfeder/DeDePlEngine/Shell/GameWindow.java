@@ -17,7 +17,7 @@ public class GameWindow {
 	public GameWindow(String Position) throws IOException {}
 	public GameWindow() throws IOException{}
 	public String GameWindo(String Position) throws IOException {
-		pl = new Plugin();
+		pl = new Plugin("null");
 		tf1Text = story.getText(Position + "tf1"+"Text");
 		tf2Text = story.getText(Position + "tf2"+"Text");
 		tf3Text = story.getText(Position + "tf3"+"Text");
@@ -29,7 +29,7 @@ public class GameWindow {
 		tf2Fieldlen = 1;
 		tf3Fieldlen = 1;
 		n = confStory.getLen(Position+"nField");
-		Plugin pl = new Plugin();
+		//Plugin pl = new Plugin();
 		pl.sendPosition(Position);
 //		System.out.println(Inhalt.values());
 //		System.out.println(StB + "in Zahl");

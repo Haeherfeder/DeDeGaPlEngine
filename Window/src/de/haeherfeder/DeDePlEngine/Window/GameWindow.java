@@ -25,7 +25,7 @@ public class GameWindow {
 	public GameWindow(String Position) throws IOException{}
 	public GameWindow() throws IOException{}
 	public String GameWindo(String Position) throws IOException{
-		pl = new Plugin();
+		pl = new Plugin("null");
 		tf1Text = story.getText(Position + "tf1Text");
 		tf2Text = story.getText(Position + "tf2Text");
 		tf3Text = story.getText(Position + "tf3Text");
@@ -40,8 +40,13 @@ public class GameWindow {
 		int b,h;
 		b = conf.getInt("width");
 		h = conf.getInt("hight");
-		Plugin pl = new Plugin();
-		pl.sendPosition(Position);
+		//Plugin pl = new Plugin();
+		if(Position!=null) {
+			System.out.println("Position not null."+Position);
+			pl.sendPosition(Position);
+		}else {
+			pl.sendPosition("null");
+		}
 		/*
 		b = 800;
 		h = 400;*/

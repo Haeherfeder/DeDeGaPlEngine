@@ -5,6 +5,7 @@ package de.haeherfeder.DeDePlEngine.Shell;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import de.haeherfeder.DeDePlEngine.all.*;
 
@@ -13,7 +14,7 @@ import de.haeherfeder.DeDePlEngine.all.*;
  *
  */
 public class Main {
-
+	static boolean end = true;
 	/**
 	 * @param args
 	 * @throws IOException 
@@ -32,7 +33,17 @@ public class Main {
 		new Main(Position);
 		System.out.println("Exit");
 		pl.stop();
-		System.exit(0);
+		while(true) {
+			if(end) {
+			System.exit(0);
+			}
+			try {
+				TimeUnit.SECONDS.sleep(60);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	public void setPosition(String NewPos) {
 		Position = NewPos;
@@ -45,5 +56,8 @@ public class Main {
 	}
 	public Main() {
 		
+	}
+	public void setEnd(boolean end) {
+		Main.end = end;
 	}
 }
