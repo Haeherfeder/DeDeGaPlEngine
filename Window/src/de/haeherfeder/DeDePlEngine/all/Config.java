@@ -12,7 +12,6 @@ public class Config {
 	private Properties p = new Properties();
 //	Files
 	private File config = new File("config/config.xml");
-	private File player = new File("config/player.txt");
 	private File Story = new File("Story/config.txt");
 
 	public Config() {
@@ -31,7 +30,6 @@ public class Config {
 	
 //		Proof if exist
 		if(!config.exists()) 	{new CreateConfig(p);}
-		if(!player.exists()) 	{player.createNewFile();}
 		if(!Story.exists()) 	{
 			Story.createNewFile();
 			new Story();
