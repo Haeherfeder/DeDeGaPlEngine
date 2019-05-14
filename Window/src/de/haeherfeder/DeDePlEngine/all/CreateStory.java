@@ -34,7 +34,7 @@ public class CreateStory {
 		out.close();
 	}
 	private void setPr(String key,String vel,Properties p) {
-		new SetPr(key,vel,p);
+		Methoden.setPr(key,vel,p);
 		return;
 	}
 }
