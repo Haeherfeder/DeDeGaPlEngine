@@ -13,15 +13,16 @@ public class Main {
 		Plugin pl = new Plugin();
 		Config conf = new Config();
 		conf.configFRSt();
-		conf.setPr("CurrentMode", "Window");
-		Position = new Story().getText("FirstP");
+		Config.setPr("CurrentMode", "Window");
+		new Story();
+		Position = Story.getText("FirstP");
 		pl.GameWindowStart(Position);
 		pl.setEngineVersion("Window");
 		new Main(Position);
 		pl.stop();
 		System.exit(0);
 	}
-	public void setPosition(String NewPos) {
+	public static void setPosition(String NewPos) {
 		Position = NewPos;
 	}
 	public Main(String Position) throws IOException {
@@ -29,8 +30,5 @@ public class Main {
 		while(!("Ende".equalsIgnoreCase(Position))) {
 			Position = gamewindow.GameWindo(Position);	
 		}
-	}
-	public Main() {
-		
 	}
 }

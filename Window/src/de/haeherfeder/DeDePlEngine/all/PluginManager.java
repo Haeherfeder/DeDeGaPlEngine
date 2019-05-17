@@ -11,7 +11,6 @@ public class PluginManager implements IPluginManager {
 			Shell = new de.haeherfeder.DeDePlEngine.Shell.GameWindow();
 			Window = new de.haeherfeder.DeDePlEngine.Window.GameWindow();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -26,7 +25,6 @@ public class PluginManager implements IPluginManager {
 
 	@Override
 	public void DisableGameWindow() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -34,7 +32,7 @@ public class PluginManager implements IPluginManager {
 	public void setPosition(String Position) {
 		// TODO Auto-generated method stub
 		try {
-			switch(conf.getProp("CurrentMode")) {
+			switch(Config.getProp("CurrentMode")) {
 			case "Shell":
 				new de.haeherfeder.DeDePlEngine.Shell.Main(Position);
 			case "Window":
@@ -48,37 +46,35 @@ public class PluginManager implements IPluginManager {
 		return;
 	}
 	public void setStartPosition(String Position) {
-		switch(conf.getProp("CurrentMode")) {
+		switch(Config.getProp("CurrentMode")) {
 		case "Shell":
 			new de.haeherfeder.DeDePlEngine.Shell.Main().setPosition(Position);
 			break;
 		case "Window":
-			new de.haeherfeder.DeDePlEngine.Window.Main().setPosition(Position);
+			de.haeherfeder.DeDePlEngine.Window.Main.setPosition(Position);
 			break;
 		}
 	}
 	public String SinglePosition(String Position) {
 		try {
-			switch(conf.getProp("CurrentMode")) {
+			switch(Config.getProp("CurrentMode")) {
 			case "Shell":
 				return Shell.GameWindo(Position);
 			case "Window":
 				return Window.GameWindo(Position);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(1);
 		}
 		return "";
 	}
 	public String getconf(String key) {
-		return conf.getProp(key);
+		return Config.getProp(key);
 	}
 	public String getStory(String key) {
 		try {
-			Story story = new Story();
-			return story.getText(key);
+			return Story.getText(key);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -88,7 +84,7 @@ public class PluginManager implements IPluginManager {
 
 	@Override
 	public void setText(String WhichText, String Text) {
-		switch(conf.getProp("CurrentMode")) 
+		switch(Config.getProp("CurrentMode")) 
 		{
 			case "Shell":
 				switch(WhichText) 
@@ -152,7 +148,7 @@ public class PluginManager implements IPluginManager {
 	@Override
 	public void setInt(String Which, int vel) {
 		// TODO Auto-generated method stub
-		switch(conf.getProp("CurrentMode")) {
+		switch(Config.getProp("CurrentMode")) {
 		case "Shell":
 			switch(Which) {
 			case "tf1Fieldlen":

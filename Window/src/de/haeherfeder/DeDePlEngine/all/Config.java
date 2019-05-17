@@ -9,10 +9,10 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
 
 public class Config {
-	private Properties p = new Properties();
+	private static Properties p = new Properties();
 //	Files
-	private File config = new File("config/config.xml");
-	private File Story = new File("Story/config.txt");
+	private static File config = new File("config/config.xml");
+	private static File Story = new File("Story/config.txt");
 
 	public Config() {
 		return;
@@ -46,18 +46,7 @@ public class Config {
 //		System.out.println(config);
 		return;
 	}
-	/*public void setPr(String key,String vel,Properties p) throws IOException {
-		FileReader reader = new FileReader(config);
-		p.load(reader);
-		FileWriter write = new FileWriter(config);
-		p.setProperty(key, vel);
-//			System.out.println(key + " wurde erstellt");
-		p.store(write, "neu value: "+vel);
-		write.close();
-		reader.close();
-		return;
-	}*/
-	public void setPr(String key,String vel) throws IOException {
+	public static void setPr(String key,String vel) throws IOException {
 		try {
 			FileInputStream reader = new FileInputStream(config);
 			p.loadFromXML(reader);
@@ -73,7 +62,7 @@ public class Config {
 		write.close();
 		return;
 	}
-	public String getProp(String key) {
+	public static String getProp(String key) {
 		try {
 			FileInputStream read = new FileInputStream(config);
 			p.loadFromXML(read);
@@ -90,7 +79,7 @@ public class Config {
 		if(p.getProperty(key)==null) {return "not defined";}
 		return p.getProperty(key);
 	}
-	public int getInt(String key){
+	public static int getInt(String key){
 		String vel = getProp(key);
 		if(vel=="not defined") {
 			if (key=="default") {

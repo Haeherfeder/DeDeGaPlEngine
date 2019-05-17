@@ -18,13 +18,13 @@ public class GameWindow {
 	public GameWindow() throws IOException{}
 	public String GameWindo(String Position) throws IOException {
 		pl = new Plugin("null");
-		tf1Text = story.getText(Position + "tf1"+"Text");
-		tf2Text = story.getText(Position + "tf2"+"Text");
-		tf3Text = story.getText(Position + "tf3"+"Text");
-		tf1Fieldtext = story.getText(Position + "tf1"+"Fieldtext");
-		tf2Fieldtext = story.getText(Position + "tf2"+"Fieldtext");
-		tf3Fieldtext = story.getText(Position + "tf3"+"Fieldtext");
-		PanelName = story.getText(Position+"Panel"+"Name");
+		tf1Text = Story.getText(Position + "tf1"+"Text");
+		tf2Text = Story.getText(Position + "tf2"+"Text");
+		tf3Text = Story.getText(Position + "tf3"+"Text");
+		tf1Fieldtext = Story.getText(Position + "tf1"+"Fieldtext");
+		tf2Fieldtext = Story.getText(Position + "tf2"+"Fieldtext");
+		tf3Fieldtext = Story.getText(Position + "tf3"+"Fieldtext");
+		PanelName = Story.getText(Position+"Panel"+"Name");
 		tf1Fieldlen = 10;
 		tf2Fieldlen = 1;
 		tf3Fieldlen = 1;
@@ -91,11 +91,11 @@ public class GameWindow {
 *			e.printStackTrace();
 *		}*/
 		
-			if (story.getText(Position+"Next"+Text)==null) {
+			if (Story.getText(Position+"Next"+Text)==null) {
 				System.out.println("Way not defined");
 				return Position;
 			}else {
-				Position = story.getText(Position+"Next"+Text);
+				Position = Story.getText(Position+"Next"+Text);
 				return Position;
 			}	
 		}

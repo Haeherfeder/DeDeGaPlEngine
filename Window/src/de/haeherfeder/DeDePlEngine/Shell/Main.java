@@ -25,8 +25,9 @@ public class Main {
 		Plugin pl = new Plugin();
 		Config conf = new Config();
 		conf.configFRSt();
-		conf.setPr("CurrentMode", "Shell");
-		Position = new Story().getText("FirstP");
+		Config.setPr("CurrentMode", "Shell");
+		new Story();
+		Position = Story.getText("FirstP");
 		pl.GameWindowStart(Position);
 		pl.setEngineVersion("Shell");
 
@@ -57,7 +58,7 @@ public class Main {
 	public Main() {
 		
 	}
-	public void setEnd(boolean end) {
+	public static void setEnd(boolean end) {
 		Main.end = end;
 	}
 }

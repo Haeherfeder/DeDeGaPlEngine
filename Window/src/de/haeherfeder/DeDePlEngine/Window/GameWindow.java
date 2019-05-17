@@ -26,20 +26,20 @@ public class GameWindow {
 	public GameWindow() throws IOException{}
 	public String GameWindo(String Position) throws IOException{
 		pl = new Plugin("null");
-		tf1Text = story.getText(Position + "tf1Text");
-		tf2Text = story.getText(Position + "tf2Text");
-		tf3Text = story.getText(Position + "tf3Text");
-		tf1Fieldtext = story.getText(Position + "tf1Fieldtext");
-		tf2Fieldtext = story.getText(Position + "tf2Fieldtext");
-		tf3Fieldtext = story.getText(Position + "tf3Fieldtext");
-		PanelName = story.getText(Position+"PanelName");
+		tf1Text = Story.getText(Position + "tf1Text");
+		tf2Text = Story.getText(Position + "tf2Text");
+		tf3Text = Story.getText(Position + "tf3Text");
+		tf1Fieldtext = Story.getText(Position + "tf1Fieldtext");
+		tf2Fieldtext = Story.getText(Position + "tf2Fieldtext");
+		tf3Fieldtext = Story.getText(Position + "tf3Fieldtext");
+		PanelName = Story.getText(Position+"PanelName");
 		tf1Fieldlen = 10;
 		tf2Fieldlen = 1;
 		tf3Fieldlen = 1;
 		n = confStory.getLen(Position+"nField");
 		int b,h;
-		b = conf.getInt("width");
-		h = conf.getInt("hight");
+		b = Config.getInt("width");
+		h = Config.getInt("hight");
 		//Plugin pl = new Plugin();
 		if(Position!=null) {
 			System.out.println("Position not null."+Position);
@@ -69,7 +69,7 @@ public class GameWindow {
 //			f.remove(p1);
 //			TextField tf2 = new TextField(Text);
 		System.out.println("f");
-		int timesleep = conf.getInt("timesleep");
+		int timesleep = Config.getInt("timesleep");
 //			f.add(p1);
 		while(true) {
 			System.out.println("Gelesen: " + tf2.getText());
@@ -78,7 +78,7 @@ public class GameWindow {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		if(tf2.getText().matches(conf.getProp("BuchstabeBestätigung"))) {
+		if(tf2.getText().matches(Config.getProp("BuchstabeBestätigung"))) {
 			System.out.println("Ende, J gelesen.");
 			break;
 		}
@@ -87,7 +87,6 @@ public class GameWindow {
 		pl.PlayerInput(Text,Position);
 		
 		System.out.println("Text: " + Text);
-		conf.getProp("key");
 		try {
 			TimeUnit.SECONDS.sleep(timesleep);
 		} catch (InterruptedException e) {
@@ -97,11 +96,11 @@ public class GameWindow {
 		System.out.println("Position: "+Position);
 //		boolean hi = Position!="Start";
 		System.out.println(Position+"Next"+Text);
-		System.out.println(story.getText(Position+"Next"+Text));
+		System.out.println(Story.getText(Position+"Next"+Text));
 		
 		
 		
-		if (story.getText(Position+"Next"+Text)==null) {
+		if (Story.getText(Position+"Next"+Text)==null) {
 			tf1.setText("Way not defined");
 			
 			System.out.println("Way not defined");
@@ -111,7 +110,7 @@ public class GameWindow {
 		}else {
 			f.removeAll();
 			f.setVisible(false);
-			Position = story.getText(Position+"Next"+Text);
+			Position = Story.getText(Position+"Next"+Text);
 			return(Position);
 		}
 	}

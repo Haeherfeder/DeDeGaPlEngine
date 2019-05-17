@@ -15,8 +15,7 @@ public class CreateConfigStory {
 		Methoden.setPr("Start"+"tf3"+"Field"+"len","1",p);
 		Methoden.setPr("Start"+"nField","3",p);
 	}
-	
-	
+		
 	public CreateConfigStory(Properties p) throws IOException{
 		if(!configFolder.exists()) 	{configFolder.mkdirs();}
 		if(config.exists()) 	{

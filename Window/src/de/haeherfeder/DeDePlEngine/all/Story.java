@@ -11,10 +11,10 @@ import java.util.Properties;
  *
  */
 public class Story {
-	private File Story = new File("Story/config.txt");
+	private static File Story = new File("Story/config.txt");
 	private File StoryFolder = new File("Story");
 	
-	private Properties p = new Properties();
+	private static Properties p = new Properties();
 	public Story() throws IOException {
 		if(!StoryFolder.exists()) {StoryFolder.mkdirs();}
 		if(!Story.exists()) {Story.createNewFile();}
@@ -26,14 +26,14 @@ public class Story {
 		p.load(read);
 		read.close();
 	}
-	public String getText(String key) throws IOException{
+	public static String getText(String key) throws IOException{
 		FileReader read = new FileReader(Story);
 		p.load(read);
 		read.close();
 		String vel = p.getProperty(key);
 		return vel;
 	}
-	public int getLen(String key) throws IOException{
+	public static int getLen(String key) throws IOException{
 		FileReader read = new FileReader(Story);
 		p.load(read);
 		read.close();
