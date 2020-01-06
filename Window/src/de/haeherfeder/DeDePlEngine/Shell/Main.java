@@ -41,12 +41,11 @@ public class Main {
 			try {
 				TimeUnit.SECONDS.sleep(60);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
-	public void setPosition(String NewPos) {
+	public static void setPosition(String NewPos) {
 		Position = NewPos;
 	}
 	public Main(String Position) throws IOException {

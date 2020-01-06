@@ -30,7 +30,6 @@ public class PluginManager implements IPluginManager {
 
 	@Override
 	public void setPosition(String Position) {
-		// TODO Auto-generated method stub
 		try {
 			switch(Config.getProp("CurrentMode")) {
 			case "Shell":
@@ -39,7 +38,6 @@ public class PluginManager implements IPluginManager {
 				new de.haeherfeder.DeDePlEngine.Window.Main(Position);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(1);
 		}
@@ -48,7 +46,7 @@ public class PluginManager implements IPluginManager {
 	public void setStartPosition(String Position) {
 		switch(Config.getProp("CurrentMode")) {
 		case "Shell":
-			new de.haeherfeder.DeDePlEngine.Shell.Main().setPosition(Position);
+			de.haeherfeder.DeDePlEngine.Shell.Main.setPosition(Position);
 			break;
 		case "Window":
 			de.haeherfeder.DeDePlEngine.Window.Main.setPosition(Position);
@@ -76,7 +74,6 @@ public class PluginManager implements IPluginManager {
 		try {
 			return Story.getText(key);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		return null;
@@ -147,7 +144,6 @@ public class PluginManager implements IPluginManager {
 
 	@Override
 	public void setInt(String Which, int vel) {
-		// TODO Auto-generated method stub
 		switch(Config.getProp("CurrentMode")) {
 		case "Shell":
 			switch(Which) {

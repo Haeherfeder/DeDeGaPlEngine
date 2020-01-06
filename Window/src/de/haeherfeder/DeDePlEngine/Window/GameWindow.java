@@ -21,7 +21,7 @@ public class GameWindow {
 		int tf1Fieldlen,tf2Fieldlen,tf3Fieldlen,n;
 		Story story = new Story();
 		ConfigStory confStory = new ConfigStory();
-		FrameManager Frame = new FrameManager();
+//		FrameManager Frame = new FrameManager();
 	public GameWindow(String Position) throws IOException{}
 	public GameWindow() throws IOException{}
 	public String GameWindo(String Position) throws IOException{
@@ -65,7 +65,7 @@ public class GameWindow {
 			return "Ende";
 		default:
 			break;}
-		f = Frame.setFrame(PanelName, h, b, n, p1, l1, p2, l2, p3, l3);
+		f = FrameManager.setFrame(PanelName, h, b, n, p1, l1, p2, l2, p3, l3);
 //			f.remove(p1);
 //			TextField tf2 = new TextField(Text);
 		System.out.println("f");
@@ -94,11 +94,8 @@ public class GameWindow {
 		}
 
 		System.out.println("Position: "+Position);
-//		boolean hi = Position!="Start";
 		System.out.println(Position+"Next"+Text);
 		System.out.println(Story.getText(Position+"Next"+Text));
-		
-		
 		
 		if (Story.getText(Position+"Next"+Text)==null) {
 			tf1.setText("Way not defined");

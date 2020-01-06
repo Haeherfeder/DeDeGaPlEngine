@@ -12,7 +12,7 @@ public class GameWindow {
 		int tf1Fieldlen,tf2Fieldlen,tf3Fieldlen,n;
 		Story story = new Story();
 		ConfigStory confStory = new ConfigStory();
-		boolean fals = false;
+		boolean doend = false;
 		
 	public GameWindow(String Position) throws IOException {}
 	public GameWindow() throws IOException{}
@@ -54,7 +54,7 @@ public class GameWindow {
 			/*
 			 * 
 			 */
-			if(fals) 
+			if(doend) 
 			{
 				return "Ende";
 			}
@@ -135,8 +135,8 @@ public class GameWindow {
 		}
 		return;
 	}
-	public void setEnd(boolean End) {
-		fals = End;
+	public void setEnd(boolean end) {
+		doend = end;
 	}
 	public void settf1Text(String tf1Text) {
 		this.tf1Text = tf1Text;
