@@ -1,6 +1,5 @@
 package de.haeherfeder.DeDePlEngine.Window;
 
-import java.awt.Frame;
 import java.awt.Panel;
 import java.awt.TextArea;
 import java.awt.TextField;
@@ -9,20 +8,12 @@ import java.util.concurrent.TimeUnit;
 
 import de.haeherfeder.DeDePlEngine.all.*;
 
-public class GameWindowWindow extends GameWindow{
-		Plugin pl;
-		Config conf = new Config();
-		TextField tf1,tf2,tf3 = null;
-		TextArea l1,l2,l3 = null; 
-		Panel p1,p2,p3 = null;
-		Frame f = null;
-		String text,tf1Text,tf2Text,tf3Text,tf1Fieldtext,tf2Fieldtext,tf3Fieldtext,panelName = null;
-		int tf1Fieldlen,tf2Fieldlen,tf3Fieldlen,n;
-		Story story = new Story();
-		ConfigStory confStory = new ConfigStory();
+public class GameWindowWindow extends GameWindow {
 		private boolean end,running;
-//		FrameManager Frame = new FrameManager();
-	public GameWindowWindow() throws IOException{}
+	public GameWindowWindow() throws IOException {
+		story = new Story();
+		confStory= new ConfigStory();
+	}
 	public String gameWindow(String position) throws IOException{
 		tf1Text = Story.getText(position + "tf1Text");
 		tf2Text = Story.getText(position + "tf2Text");
@@ -38,7 +29,6 @@ public class GameWindowWindow extends GameWindow{
 		int b,h;
 		b = Config.getInt("width");
 		h = Config.getInt("hight");
-		//Plugin pl = new Plugin();
 		if(position!=null) {
 			System.out.println("position not null."+position);
 			pl.sendPosition(position);
@@ -70,17 +60,18 @@ public class GameWindowWindow extends GameWindow{
 //		int timesleep = Config.getInt("timesleep");
 //			f.add(p1);
 		running = true;
+		pl.waitForInput(position);
 		while(running) {
-			System.out.println("Gelesen: " + tf2.getText());
-		try {
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		if(tf2.getText().matches(Config.getProp("BuchstabeBestätigung"))) {
-			System.out.println("Ende, J gelesen.");
-			break;
-		}
+				System.out.println("Gelesen: " + tf2.getText());
+			try {
+				TimeUnit.SECONDS.sleep(1);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			if(tf2.getText().matches(Config.getProp("BuchstabeBestätigung"))) {
+				System.out.println("Ende, J gelesen.");
+				break;
+			}
 		}
 		if(!tf2.getText().matches(Config.getProp("BuchstabeBestätigung"))) {
 			pl.PlayerInput(null,position);

@@ -21,6 +21,7 @@ public class Main extends MainManager{
 		if(!new File("./plugin").exists()) {new File("./plugin").mkdir();}
 		gamewindow = new GameWindowWindow();
 		Plugin pl = new Plugin(new PluginManager(gamewindow, this));
+		gamewindow.setPlugin(pl);
 		Config conf = new Config();
 		conf.configFRSt();
 		Config.setPr("CurrentMode", "Window");

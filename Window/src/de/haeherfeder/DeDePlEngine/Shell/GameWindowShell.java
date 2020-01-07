@@ -6,16 +6,14 @@ import java.util.Scanner;
 import de.haeherfeder.DeDePlEngine.all.*;
 
 public class GameWindowShell extends GameWindow {
-		Plugin pl;
-		Config conf = new Config();
-		String tf1Text,tf2Text,tf3Text,tf1Fieldtext,tf2Fieldtext,tf3Fieldtext,panelName,tf1Text2,tf2Text2,tf3Text2 = null;
-		int tf1Fieldlen,tf2Fieldlen,tf3Fieldlen,n;
-		Story story = new Story();
-		ConfigStory confStory = new ConfigStory();
-		boolean doend = false;
-		private boolean running;
-		
-	public GameWindowShell() throws IOException{}
+	boolean doend = false;
+	private boolean running;
+	
+	public GameWindowShell() throws IOException {
+		story = new Story();
+		confStory= new ConfigStory();
+	}
+	
 	public String gameWindow(String position) throws IOException {
 		tf1Text = Story.getText(position + "tf1"+"Text");
 		tf2Text = Story.getText(position + "tf2"+"Text");
@@ -28,39 +26,18 @@ public class GameWindowShell extends GameWindow {
 		tf2Fieldlen = 1;
 		tf3Fieldlen = 1;
 		n = confStory.getLen(position+"nField");
-		//Plugin pl = new Plugin();
 		pl.sendPosition(position);
-//		System.out.println(Inhalt.values());
-//		System.out.println(StB + "in Zahl");
-		/*
-		b = 800;
-		h = 400;*/
-//		tf1 = TextFieldG(tf1Fieldtext,tf1Fieldlen);
-//		tf2 = TextFieldG(tf2Fieldtext,tf2Fieldlen);
-//		tf3 = TextFieldG(tf3Fieldtext,tf3Fieldlen);
-//		p1 = PanelG(tf1);
-//		p2 = PanelG(tf2);
-//		p3 = PanelG(tf3);
-//		l1 = LabelG(tf1Text,null);
-//		l2 = LabelG(tf2Text,null);
-//		l3 = LabelG(tf3Text,null);
 		
 		switch(position) {
 		case "Ende":
 		case "ende":
 			return "Ende";
 		default:
-			/*
-			 * 
-			 */
 			if(doend) 
 			{
 				return "Ende";
 			}
 			frame(panelName, n, tf1Fieldtext, tf1Text, tf2Fieldtext, tf2Text, tf3Fieldtext, tf3Text);
-//			f.remove(p1);
-//			TextField tf2 = new TextField(Text);
-//		System.out.println("f");
 			Scanner scanner = new Scanner(System.in);
 			running = true;
 			pl.waitForInput(position);
@@ -82,70 +59,33 @@ public class GameWindowShell extends GameWindow {
 					position = Story.getText(position+"Next"+text);
 					return position;
 				}
-			}else {
+			} else {
 				pl.PlayerInput(null, position);
 				position = Story.getText(position+"Default"+"Next");
 				return position;
-			}
-			//		scanner.close();
-/*		
-		int timesleep = conf.getInt("timesleep");
-//			f.add(p1);
-		while(true) {
-//			System.out.println("Gelesen: " + tf2.getText());
-			try {
-				TimeUnit.SECONDS.sleep(timesleep);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}*/
-		/*
-*		if(tf2.getText().matches(conf.getProp("BuchstabeBestätigung"))) {
-*			System.out.println("Ende, J gelesen.");
-*			break;
-*		}
-*		}
-*		Text = tf1.getText();
-*		try {
-*			TimeUnit.SECONDS.sleep(8);
-*		} catch (InterruptedException e) {
-*			e.printStackTrace();
-*		}*/
-		
+			}		
 		}
 	}
 	public void frame(String name,int n, String p1, String la1,String p2,String la2,String p3, String la3) {
 		System.out.println(name);
 		for(int i = 0;i<n&&i<4;i++) {
-//			System.out.println("for");
 			switch(i) {
 			case 0:
-//				System.out.println("case 0");
-			break;
+				break;
 			case 1:	
-//				f.add(la1);
 				System.out.print(la1);
-//				f.add(p1);
 				System.out.println(p1);
-//				System.out.println("case 1");
-			break;
+				break;
 			case 2:
-//				f.add(la2);
 				System.out.print(la2);
-//				f.add(p2);
 				System.out.println(p2);
-//				System.out.println("case 2");
-			break;
+				break;
 			case 3:
-//				f.add(la3);
 				System.out.print(la3);
-//				f.add(p3);
 				System.out.println(p3);
-//				System.out.println("case 3");
-			break;
+				break;
 			default:
-//				System.out.println("cas def");
-			break;
+				break;
 			}
 		}
 		return;

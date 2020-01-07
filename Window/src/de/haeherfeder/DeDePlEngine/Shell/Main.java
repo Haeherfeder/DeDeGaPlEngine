@@ -25,11 +25,12 @@ public class Main extends MainManager {
 	public void setStartPosition(String newPos) {
 		position = newPos;
 	}
-	public Main() throws IOException{
+	public Main() throws IOException {
 		if(!new File("./plugin").exists()) {new File("./plugin").mkdir();}
 		gamewindow = new GameWindowShell();
 		PluginManager pluginManager = new PluginManager(gamewindow, this);
 		Plugin pl = new Plugin(pluginManager);
+		gamewindow.setPlugin(pl);
 		Config conf = new Config();
 		conf.configFRSt();
 		Config.setPr("CurrentMode", "Shell");
@@ -41,6 +42,7 @@ public class Main extends MainManager {
 		while(!("Ende".equalsIgnoreCase(position))) {
 			position = gamewindow.gameWindow(position);	
 		}
+		
 		System.out.println("Exit");
 		pl.stop();
 		while(true) {
@@ -53,7 +55,6 @@ public class Main extends MainManager {
 				e.printStackTrace();
 			}
 		}
-
 	}
 	public void setEnd(boolean end) {
 		Main.end = end;
