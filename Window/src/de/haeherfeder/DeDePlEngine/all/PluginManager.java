@@ -3,16 +3,13 @@ package de.haeherfeder.DeDePlEngine.all;
 import java.io.IOException;
 
 public class PluginManager implements IPluginManager {
-	de.haeherfeder.DeDePlEngine.Shell.GameWindow Shell;
-	de.haeherfeder.DeDePlEngine.Window.GameWindow Window;
 	
-	public PluginManager() {
-		try {
-			Shell = new de.haeherfeder.DeDePlEngine.Shell.GameWindow();
-			Window = new de.haeherfeder.DeDePlEngine.Window.GameWindow();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	GameWindow gameWindow;
+	MainManager main;
+	
+	public PluginManager(GameWindow gameWindow, MainManager main) {
+		this.gameWindow = gameWindow;
+		this.main = main;
 	}
 	
 	Config conf = new Config();
@@ -24,48 +21,31 @@ public class PluginManager implements IPluginManager {
 	}*/
 
 	@Override
-	public void DisableGameWindow() {
+	public void disableGameWindow() {
 		
 	}
 
 	@Override
-	public void setPosition(String Position) {
+	public void setPosition(String position) {
 		try {
-			switch(Config.getProp("CurrentMode")) {
-			case "Shell":
-				new de.haeherfeder.DeDePlEngine.Shell.Main(Position);
-			case "Window":
-				new de.haeherfeder.DeDePlEngine.Window.Main(Position);
-			}
+			gameWindow.gameWindow(position);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.exit(1);
 		}
 		return;
 	}
-	public void setStartPosition(String Position) {
-		switch(Config.getProp("CurrentMode")) {
-		case "Shell":
-			de.haeherfeder.DeDePlEngine.Shell.Main.setPosition(Position);
-			break;
-		case "Window":
-			de.haeherfeder.DeDePlEngine.Window.Main.setPosition(Position);
-			break;
-		}
+	public void setStartPosition(String position) {
+		main.setStartPosition(position);
 	}
-	public String SinglePosition(String Position) {
+	public String singlePosition(String Position) {
 		try {
-			switch(Config.getProp("CurrentMode")) {
-			case "Shell":
-				return Shell.GameWindo(Position);
-			case "Window":
-				return Window.GameWindo(Position);
-			}
+			return gameWindow.gameWindow(Position);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.exit(1);
 		}
-		return "";
+		return null;
 	}
 	public String getconf(String key) {
 		return Config.getProp(key);
@@ -80,100 +60,55 @@ public class PluginManager implements IPluginManager {
 	}
 
 	@Override
-	public void setText(String WhichText, String Text) {
-		switch(Config.getProp("CurrentMode")) 
+	public void setText(String whichText, String Text) {
+		switch(whichText) 
 		{
-			case "Shell":
-				switch(WhichText) 
-				{
-					case "tf1Text":
-						Shell.settf1Text(Text);
-						break;
-					case "tf2Text":
-						Shell.settf2Text(Text);
-						break;
-					case "tf3Text":
-						Shell.settf3Text(Text);
-						break;
-					case "tf1Fieldtext":
-						Shell.settf1Fieldtext(Text);
-						break;
-					case "tf2Fieldtext":
-						Shell.settf2Fieldtext(Text);
-						break;
-					case "tf3Fieldtext":
-						Shell.settf3Fieldtext(Text);
-						break;
-					case "PanelName":
-						Shell.setPanelName(Text);
-						break;
-					default: 
-						break;
-				}
+			case "tf1Text":
+				gameWindow.settf1Text(Text);
 				break;
-			case "Window":
-				switch(WhichText) 
-				{
-					case "tf1Text":
-						Window.settf1Text(Text);
-						break;
-					case "tf2Text":
-						Window.settf2Text(Text);
-						break;
-					case "tf3Text":
-						Window.settf3Text(Text);
-						break;
-					case "tf1Fieldtext":
-						Window.settf1Fieldtext(Text);
-						break;
-					case "tf2Fieldtext":
-						Window.settf2Fieldtext(Text);
-						break;
-					case "tf3Fieldtext":
-						Window.settf3Fieldtext(Text);
-						break;
-					case "PanelName":
-						Window.setPanelName(Text);
-						break;
-					default: 
-						break;
-				}
-			break;
+			case "tf2Text":
+				gameWindow.settf2Text(Text);
+				break;
+			case "tf3Text":
+				gameWindow.settf3Text(Text);
+				break;
+			case "tf1Fieldtext":
+				gameWindow.settf1Fieldtext(Text);
+				break;
+			case "tf2Fieldtext":
+				gameWindow.settf2Fieldtext(Text);
+				break;
+			case "tf3Fieldtext":
+				gameWindow.settf3Fieldtext(Text);
+				break;
+			case "PanelName":
+				gameWindow.setPanelName(Text);
+				break;
+			default: 
+				break;
 		}
 	}
 
 	@Override
-	public void setInt(String Which, int vel) {
-		switch(Config.getProp("CurrentMode")) {
-		case "Shell":
-			switch(Which) {
-			case "tf1Fieldlen":
-				break;
-			case "tf2Fieldlen":
-				break;
-			case "tf3Fieldlen":
-				break;
-			case "fields":
-				break;
-		}
-		case "Window":
-			switch(Which) {
-			case "tf1Fieldlen":
-				Window.settf1Fieldlen(vel);
-				break;
-			case "tf2Fieldlen":
-				Window.settf2Fieldlen(vel);
-				break;
-			case "tf3Fieldlen":
-				Window.settf3Fieldlen(vel);
-				break;
-			case "fields":
-				Window.setFields(vel);
-				break;
-			}
+	public void setInt(String which, int vel) {
+		switch(which) {
+		case "tf1Fieldlen":
+			gameWindow.settf1Fieldlen(vel);
+			break;
+		case "tf2Fieldlen":
+			gameWindow.settf2Fieldlen(vel);
+			break;
+		case "tf3Fieldlen":
+			gameWindow.settf3Fieldlen(vel);
+			break;
+		case "fields":
+			gameWindow.settf1Fieldlen(vel);
+			gameWindow.settf2Fieldlen(vel);
+			gameWindow.settf3Fieldlen(vel);
+			break;
 		}
 	}
-	public void DoNotEnde() {
-		
+	public void doNotEnde() {
+		MainManager.end = false;
 	}
 }

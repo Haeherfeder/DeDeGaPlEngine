@@ -12,7 +12,7 @@ public class Config {
 	private static Properties p = new Properties();
 //	Files
 	private static File config = new File("config/config.xml");
-	private static File Story = new File("Story/config.txt");
+	private static File story = new File("Story/config.txt");
 
 	public Config() {
 		return;
@@ -20,18 +20,18 @@ public class Config {
 	public void configFRSt() throws IOException {
 //		Ordner
 		File configFolder = new File("config");
-		File StoryFolder = new File("Story");
-		File PlayerFolder = new File("config/players");
+		File storyFolder = new File("Story");
+		File playerFolder = new File("config/players");
 //		Proof if exist
 		
 		if(!configFolder.exists()) 	{configFolder.mkdirs();}
-		if(!StoryFolder.exists()) 	{StoryFolder.mkdirs();}
-		if(!PlayerFolder.exists()) 	{PlayerFolder.mkdirs();}
+		if(!storyFolder.exists()) 	{storyFolder.mkdirs();}
+		if(!playerFolder.exists()) 	{playerFolder.mkdirs();}
 	
 //		Proof if exist
 		if(!config.exists()) 	{new CreateConfig(p);}
-		if(!Story.exists()) 	{
-			Story.createNewFile();
+		if(!story.exists()) 	{
+			story.createNewFile();
 			new Story();
 		}
 		

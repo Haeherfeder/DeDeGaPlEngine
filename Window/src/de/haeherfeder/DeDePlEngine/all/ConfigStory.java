@@ -6,17 +6,17 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigStory {
-	private File StoryConfig = new File("Story/StoryConfig.xml");
-	private File StoryFolder = new File("Story");
+	private File storyConfig = new File("Story/StoryConfig.xml");
+	private File storyFolder = new File("Story");
 	private Properties p = new Properties();
 	
 	public ConfigStory() throws IOException {
 //		System.out.println("Storyconfgen");
-		if(!StoryFolder.exists()) {StoryFolder.mkdirs();}
+		if(!storyFolder.exists()) {storyFolder.mkdirs();}
 //		if(!StoryConfig.exists()) {new CreateConfigStory(StoryConfig,p);
 		new CreateConfigStory(p);
 //		System.out.println("Storyconf "+p);
-		FileInputStream read = new FileInputStream(StoryConfig);
+		FileInputStream read = new FileInputStream(storyConfig);
 		p.loadFromXML(read);
 		read.close();
 //		System.out.println("Storyconf "+p);

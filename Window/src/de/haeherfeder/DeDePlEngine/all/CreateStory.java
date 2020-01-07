@@ -7,15 +7,15 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class CreateStory {
-	public CreateStory(File Story,File StoryFolder,Properties p) throws IOException {
+	public CreateStory(File story,File storyFolder,Properties p) throws IOException {
 		
-		if(!Story.exists()) {
+		if(!story.exists()) {
 //			System.out.println("Stroy exist"); 
 //			return;
 			System.out.println("Story file von CreateStory erstellt.");
 //		}
-		Story.createNewFile();}
-		FileReader read = new FileReader(Story);
+		story.createNewFile();}
+		FileReader read = new FileReader(story);
 		p.load(read);
 		read.close();
 		setPr("FirstP","Start",p);
@@ -29,7 +29,7 @@ public class CreateStory {
 		setPr("Start"+"Next"+"default","Ende",p);
 		setPr("Start"+"tf3"+"Text","hi",p);
 		
-		FileWriter out = new FileWriter(Story);
+		FileWriter out = new FileWriter(story);
 		p.store(out, "comments");
 		out.close();
 	}

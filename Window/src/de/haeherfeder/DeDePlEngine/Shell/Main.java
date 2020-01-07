@@ -13,30 +13,39 @@ import de.haeherfeder.DeDePlEngine.all.*;
  * @author benjamin
  *
  */
-public class Main {
-	static boolean end = true;
+public class Main extends MainManager{
 	/**
 	 * @param args
 	 * @throws IOException 
 	 */
-	static String Position;
+	String position;
 	public static void main(String[] args) throws IOException {
+			new Main();
+	}
+	public void setStartPosition(String newPos) {
+		position = newPos;
+	}
+	public Main() throws IOException{
 		if(!new File("./plugin").exists()) {new File("./plugin").mkdir();}
-		Plugin pl = new Plugin();
+		gamewindow = new GameWindowShell();
+		PluginManager pluginManager = new PluginManager(gamewindow, this);
+		Plugin pl = new Plugin(pluginManager);
 		Config conf = new Config();
 		conf.configFRSt();
 		Config.setPr("CurrentMode", "Shell");
 		new Story();
-		Position = Story.getText("FirstP");
-		pl.GameWindowStart(Position);
+		position = Story.getText("FirstP");
+		pl.GameWindowStart(position);
 		pl.setEngineVersion("Shell");
 
-		new Main(Position);
+		while(!("Ende".equalsIgnoreCase(position))) {
+			position = gamewindow.gameWindow(position);	
+		}
 		System.out.println("Exit");
 		pl.stop();
 		while(true) {
 			if(end) {
-			System.exit(0);
+				System.exit(0);
 			}
 			try {
 				TimeUnit.SECONDS.sleep(60);
@@ -44,20 +53,9 @@ public class Main {
 				e.printStackTrace();
 			}
 		}
+
 	}
-	public static void setPosition(String NewPos) {
-		Position = NewPos;
-	}
-	public Main(String Position) throws IOException {
-		GameWindow gamewindow = new GameWindow(Position);
-		while(!("Ende".equalsIgnoreCase(Position))) {
-			Position = gamewindow.GameWindo(Position);	
-		}
-	}
-	public Main() {
-		
-	}
-	public static void setEnd(boolean end) {
+	public void setEnd(boolean end) {
 		Main.end = end;
 	}
 }

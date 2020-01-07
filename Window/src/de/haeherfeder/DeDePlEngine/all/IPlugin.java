@@ -4,9 +4,9 @@ public interface IPlugin {
 	boolean start();
 	boolean stop();
 	void setPluginManager(PluginManager manager);
-	void GameWindowStart(String Position);
-	void PlayerInput(String Input, String position);
-	void GameStart();
+	void gameWindowStart(String Position);
+	void playerInput(String Input, String position);
+	void gameStart();
 	boolean setEngineVersion(String Version);
 	void sendPosition(String position);
 }

@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import de.haeherfeder.DeDePlEngine.all.*;
 
-public class GameWindow {
+public class GameWindowWindow extends GameWindow{
 		Plugin pl;
 		Config conf = new Config();
 		TextField tf1,tf2,tf3 = null;
@@ -21,11 +21,11 @@ public class GameWindow {
 		int tf1Fieldlen,tf2Fieldlen,tf3Fieldlen,n;
 		Story story = new Story();
 		ConfigStory confStory = new ConfigStory();
+		private boolean end;
 //		FrameManager Frame = new FrameManager();
-	public GameWindow(String Position) throws IOException{}
-	public GameWindow() throws IOException{}
-	public String GameWindo(String Position) throws IOException{
-		pl = new Plugin("null");
+	public GameWindowWindow(String Position) throws IOException{}
+	public GameWindowWindow() throws IOException{}
+	public String gameWindow(String Position) throws IOException{
 		tf1Text = Story.getText(Position + "tf1Text");
 		tf2Text = Story.getText(Position + "tf2Text");
 		tf3Text = Story.getText(Position + "tf3Text");
@@ -159,4 +159,11 @@ public class GameWindow {
 	public void setFields(int len) {
 		this.n = len;
 	}
-}	
+	@Override
+	public void setEnd(boolean end) {
+		this.end=false;
+	}
+	protected boolean getEnd() {
+		return end;
+	}
+}
