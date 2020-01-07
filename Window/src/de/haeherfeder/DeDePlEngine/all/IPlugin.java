@@ -4,9 +4,13 @@ public interface IPlugin {
 	boolean start();
 	boolean stop();
 	void setPluginManager(PluginManager manager);
-	void gameWindowStart(String Position);
-	void playerInput(String Input, String position);
+	void gameWindowStart(String position);
+	/*
+	 * @args input can be null;
+	 */
+	void playerInput(String input, String position);
 	void gameStart();
-	boolean setEngineVersion(String Version);
+	boolean setEngineVersion(String version);
 	void sendPosition(String position);
+	void waitForInput(String position);
 }

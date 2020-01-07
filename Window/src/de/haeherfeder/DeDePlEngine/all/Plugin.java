@@ -6,7 +6,7 @@ import java.util.List;
 public class Plugin {
 	List<IPlugin> plugins = PluginLoader.loadPlugins(new File("./plugin"));
     PluginManager manager;
-	public  Plugin(PluginManager manager) throws IOException {
+	public Plugin(PluginManager manager) throws IOException {
 		this.manager = manager;
 	    for (IPlugin p : plugins) {
 	      p.setPluginManager(manager);
@@ -21,19 +21,19 @@ public class Plugin {
 //			p.setPluginManager(manager);
 //		}
 //	}
-    public void GameWindowStart(String Position) {
+    public void GameWindowStart(String position) {
     	for (IPlugin p : plugins) {
-    		p.gameWindowStart(Position);
+    		p.gameWindowStart(position);
     	}
     }
-    public void setEngineVersion(String Version) {
+    public void setEngineVersion(String version) {
     	for (IPlugin p : plugins) {
-    		p.setEngineVersion(Version);
+    		p.setEngineVersion(version);
     	}
     }
-    public void  PlayerInput(String Input, String position) {
+    public void  PlayerInput(String input, String position) {
     	for (IPlugin p : plugins) {
-    		p. playerInput(Input,position);
+    		p.playerInput(input,position);
     	}
     }
     public void stop() {
@@ -42,9 +42,13 @@ public class Plugin {
     	}
     }
 	public void sendPosition(String position) {
-		// TODO Auto-generated method stub
 		for (IPlugin p : plugins) {
     		p.sendPosition(position);
     	} 
+	}
+	public void waitForInput(String position) {
+		for (IPlugin p : plugins) {
+    		p.waitForInput(position);
+    	}
 	}
 }

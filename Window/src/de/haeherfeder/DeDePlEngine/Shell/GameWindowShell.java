@@ -5,30 +5,31 @@ import java.util.Scanner;
 
 import de.haeherfeder.DeDePlEngine.all.*;
 
-public class GameWindowShell extends GameWindow{
+public class GameWindowShell extends GameWindow {
 		Plugin pl;
 		Config conf = new Config();
-		String Text, tf1Text,tf2Text,tf3Text,tf1Fieldtext,tf2Fieldtext,tf3Fieldtext,PanelName,tf1Text2,tf2Text2,tf3Text2 = null;
+		String tf1Text,tf2Text,tf3Text,tf1Fieldtext,tf2Fieldtext,tf3Fieldtext,panelName,tf1Text2,tf2Text2,tf3Text2 = null;
 		int tf1Fieldlen,tf2Fieldlen,tf3Fieldlen,n;
 		Story story = new Story();
 		ConfigStory confStory = new ConfigStory();
 		boolean doend = false;
+		private boolean running;
 		
 	public GameWindowShell() throws IOException{}
-	public String gameWindow(String Position) throws IOException {
-		tf1Text = Story.getText(Position + "tf1"+"Text");
-		tf2Text = Story.getText(Position + "tf2"+"Text");
-		tf3Text = Story.getText(Position + "tf3"+"Text");
-		tf1Fieldtext = Story.getText(Position + "tf1"+"Fieldtext");
-		tf2Fieldtext = Story.getText(Position + "tf2"+"Fieldtext");
-		tf3Fieldtext = Story.getText(Position + "tf3"+"Fieldtext");
-		PanelName = Story.getText(Position+"Panel"+"Name");
+	public String gameWindow(String position) throws IOException {
+		tf1Text = Story.getText(position + "tf1"+"Text");
+		tf2Text = Story.getText(position + "tf2"+"Text");
+		tf3Text = Story.getText(position + "tf3"+"Text");
+		tf1Fieldtext = Story.getText(position + "tf1"+"Fieldtext");
+		tf2Fieldtext = Story.getText(position + "tf2"+"Fieldtext");
+		tf3Fieldtext = Story.getText(position + "tf3"+"Fieldtext");
+		panelName = Story.getText(position+"Panel"+"Name");
 		tf1Fieldlen = 10;
 		tf2Fieldlen = 1;
 		tf3Fieldlen = 1;
-		n = confStory.getLen(Position+"nField");
+		n = confStory.getLen(position+"nField");
 		//Plugin pl = new Plugin();
-		pl.sendPosition(Position);
+		pl.sendPosition(position);
 //		System.out.println(Inhalt.values());
 //		System.out.println(StB + "in Zahl");
 		/*
@@ -44,7 +45,7 @@ public class GameWindowShell extends GameWindow{
 //		l2 = LabelG(tf2Text,null);
 //		l3 = LabelG(tf3Text,null);
 		
-		switch(Position) {
+		switch(position) {
 		case "Ende":
 		case "ende":
 			return "Ende";
@@ -56,15 +57,37 @@ public class GameWindowShell extends GameWindow{
 			{
 				return "Ende";
 			}
-			FrameG(PanelName, n, tf1Fieldtext, tf1Text, tf2Fieldtext, tf2Text, tf3Fieldtext, tf3Text);
+			frame(panelName, n, tf1Fieldtext, tf1Text, tf2Fieldtext, tf2Text, tf3Fieldtext, tf3Text);
 //			f.remove(p1);
 //			TextField tf2 = new TextField(Text);
 //		System.out.println("f");
 			Scanner scanner = new Scanner(System.in);
-			String Text = scanner.next();
-			System.out.println("Input :"+Text);
-			pl.PlayerInput(Text, Position);
-//		scanner.close();
+			running = true;
+			pl.waitForInput(position);
+			while(running && !scanner.hasNext()) {
+				try {
+					wait(1);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+			if(scanner.hasNext()) {
+				String text = scanner.next();
+				System.out.println("Input :"+text);
+				pl.PlayerInput(text, position);
+				if (Story.getText(position+"Next"+text)==null) {
+					System.out.println("Way not defined");
+					return position;
+				} else {
+					position = Story.getText(position+"Next"+text);
+					return position;
+				}
+			}else {
+				pl.PlayerInput(null, position);
+				position = Story.getText(position+"Default"+"Next");
+				return position;
+			}
+			//		scanner.close();
 /*		
 		int timesleep = conf.getInt("timesleep");
 //			f.add(p1);
@@ -89,17 +112,11 @@ public class GameWindowShell extends GameWindow{
 *			e.printStackTrace();
 *		}*/
 		
-			if (Story.getText(Position+"Next"+Text)==null) {
-				System.out.println("Way not defined");
-				return Position;
-			}else {
-				Position = Story.getText(Position+"Next"+Text);
-				return Position;
-			}	
 		}
 	}
-	public void FrameG(String Name,int n, String p1, String la1,String p2,String la2,String p3, String la3) {
-		for(int i = 0;i<n;i++) {
+	public void frame(String name,int n, String p1, String la1,String p2,String la2,String p3, String la3) {
+		System.out.println(name);
+		for(int i = 0;i<n&&i<4;i++) {
 //			System.out.println("for");
 			switch(i) {
 			case 0:
@@ -154,8 +171,8 @@ public class GameWindowShell extends GameWindow{
 	public void settf3Fieldtext(String tf3Fieldtext) {
 		this.tf3Fieldtext = tf3Fieldtext;
 	}
-	public void setPanelName(String PanelName) {
-		this.PanelName = PanelName;
+	public void setPanelName(String panelName) {
+		this.panelName = panelName;
 	}
 	public void settf1Fieldlen(int len) {
 		this.tf1Fieldlen = len;
@@ -168,5 +185,9 @@ public class GameWindowShell extends GameWindow{
 	}
 	public void setFields(int len) {
 		this.n = len;
+	}
+	@Override
+	public void stopPosition() {
+		this.running = false;
 	}
 }

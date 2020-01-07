@@ -13,14 +13,14 @@ import de.haeherfeder.DeDePlEngine.all.*;
  * @author benjamin
  *
  */
-public class Main extends MainManager{
+public class Main extends MainManager {
 	/**
 	 * @param args
 	 * @throws IOException 
 	 */
 	String position;
 	public static void main(String[] args) throws IOException {
-			new Main();
+		new Main();
 	}
 	public void setStartPosition(String newPos) {
 		position = newPos;

@@ -5,6 +5,7 @@ import java.io.IOException;
 public abstract class GameWindow {
 	public abstract String gameWindow(String Position) throws IOException;
 	public abstract void setEnd(boolean end);
+	public abstract void stopPosition();
 	public abstract void settf1Text(String tf1Text);
 	public abstract void settf2Text(String tf2Text);
 	public abstract void settf3Text(String tf3Text);

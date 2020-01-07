@@ -13,7 +13,7 @@ public class FrameManager {
 	public static Frame setFrame(String Name,int h, int b,int n, Panel p1, TextArea l1,Panel p2,TextArea l2,Panel p3, TextArea l3) {
 		Frame f = new Frame(Name);
 		f.setLayout(new GridLayout());
-		for(int i = 0;i<n;i++) {
+		for(int i = 0;i<n&&i<4;i++) {
 			System.out.println("for");
 			switch(i) {
 			case 0:

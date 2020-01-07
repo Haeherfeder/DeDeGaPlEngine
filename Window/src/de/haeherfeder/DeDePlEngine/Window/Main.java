@@ -8,7 +8,7 @@ import de.haeherfeder.DeDePlEngine.all.*;
 
 public class Main extends MainManager{
 	
-	String position = null;
+	String position;
 	GameWindow gamewindow;
 	public static void main(String[] args){
 		try {
@@ -19,7 +19,7 @@ public class Main extends MainManager{
 	}
 	public Main() throws IOException {
 		if(!new File("./plugin").exists()) {new File("./plugin").mkdir();}
-		gamewindow= new GameWindowWindow();
+		gamewindow = new GameWindowWindow();
 		Plugin pl = new Plugin(new PluginManager(gamewindow, this));
 		Config conf = new Config();
 		conf.configFRSt();
@@ -28,7 +28,7 @@ public class Main extends MainManager{
 		position = Story.getText("FirstP");
 		pl.GameWindowStart(position);
 		pl.setEngineVersion("Window");
-		GameWindow gamewindow = new GameWindowWindow(position);
+		GameWindow gamewindow = new GameWindowWindow();
 		while(!("Ende".equalsIgnoreCase(position))) {
 			position = gamewindow.gameWindow(position);	
 		}
