@@ -1,5 +1,6 @@
 package de.haeherfeder.DeDePlEngine.Window;
 
+import java.awt.Frame;
 import java.awt.Panel;
 import java.awt.TextArea;
 import java.awt.TextField;
@@ -10,9 +11,12 @@ import de.haeherfeder.DeDePlEngine.all.*;
 
 public class GameWindowWindow extends GameWindow {
 		private boolean end,running;
+		protected static GameWindow game;
 	public GameWindowWindow() throws IOException {
+		f = new Frame();
 		story = new Story();
 		confStory= new ConfigStory();
+		GameWindowWindow.game = this;
 	}
 	public String gameWindow(String position) throws IOException{
 		tf1Text = Story.getText(position + "tf1Text");
@@ -30,7 +34,6 @@ public class GameWindowWindow extends GameWindow {
 		b = Config.getInt("width");
 		h = Config.getInt("hight");
 		if(position!=null) {
-			System.out.println("position not null."+position);
 			pl.sendPosition(position);
 		}else {
 			pl.sendPosition("null");
@@ -53,7 +56,7 @@ public class GameWindowWindow extends GameWindow {
 			return "Ende";
 		default:
 			break;}
-		f = FrameManager.setFrame(panelName, h, b, n, p1, l1, p2, l2, p3, l3);
+		f = FrameManager.setFrame(f,panelName, h, b, n, p1, l1, p2, l2, p3, l3);
 //			f.remove(p1);
 //			TextField tf2 = new TextField(Text);
 //		System.out.println("f");

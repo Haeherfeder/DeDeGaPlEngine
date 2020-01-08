@@ -18,11 +18,9 @@ public class Config {
 		return;
 	}
 	public void configFRSt() throws IOException {
-//		Ordner
 		File configFolder = new File("config");
 		File storyFolder = new File("Story");
 		File playerFolder = new File("config/players");
-//		Proof if exist
 		
 		if(!configFolder.exists()) 	{configFolder.mkdirs();}
 		if(!storyFolder.exists()) 	{storyFolder.mkdirs();}
@@ -34,16 +32,9 @@ public class Config {
 			story.createNewFile();
 			new Story();
 		}
-		
-//		Properties 1
 		FileInputStream read = new FileInputStream(config);
 		p.loadFromXML(read);
 		read.close();
-		
-//		if(!p.contains("e")) {p.setProperty("e", "1");
-//			System.out.println("e nicht vorhanden.");}
-//		System.out.println(p);
-//		System.out.println(config);
 		return;
 	}
 	public static void setPr(String key,String vel) throws IOException {
@@ -52,12 +43,10 @@ public class Config {
 			p.loadFromXML(reader);
 			reader.close();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		FileOutputStream write = new FileOutputStream(config);
 		p.setProperty(key, vel);
-//			System.out.println(key + " wurde erstellt");
 		p.storeToXML(write, "neu value: "+vel);
 		write.close();
 		return;

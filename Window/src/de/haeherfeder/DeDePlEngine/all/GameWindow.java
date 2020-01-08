@@ -20,6 +20,7 @@ public abstract class GameWindow {
 	public void setPlugin(Plugin pl) {
 		this.pl = pl;
 	}
+	public Frame getFrame() {return f;}
 	public abstract String gameWindow(String Position) throws IOException;
 	public abstract void setEnd(boolean end);
 	public abstract void stopPosition();

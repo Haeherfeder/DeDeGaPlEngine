@@ -1,7 +1,10 @@
 package de.haeherfeder.DeDePlEngine.all;
 
+import java.awt.Frame;
+
 public interface IPluginManager {
 	void showVisualMessage(String message);
+	public Frame getFrame();
 	void disableGameWindow();
 	void setPosition(String position);
 	void setStartPosition(String position);

@@ -1,5 +1,6 @@
 package de.haeherfeder.DeDePlEngine.all;
 
+import java.awt.Frame;
 import java.io.IOException;
 
 public class PluginManager implements IPluginManager {
@@ -16,10 +17,7 @@ public class PluginManager implements IPluginManager {
 	public void showVisualMessage(String message) {
 		System.out.println(message);
 	}
-/*	public void GameWindowStart(String Position) {
-		
-	}*/
-
+	
 	@Override
 	public void disableGameWindow() {
 		
@@ -30,14 +28,15 @@ public class PluginManager implements IPluginManager {
 		try {
 			gameWindow.gameWindow(position);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return;
 	}
+	
 	public void setStartPosition(String position) {
 		main.setStartPosition(position);
 	}
+	
 	public String singlePosition(String Position) {
 		try {
 			return gameWindow.gameWindow(Position);
@@ -47,6 +46,7 @@ public class PluginManager implements IPluginManager {
 		}
 		return null;
 	}
+	
 	public String getconf(String key) {
 		return Config.getProp(key);
 	}
@@ -110,5 +110,10 @@ public class PluginManager implements IPluginManager {
 	}
 	public void doNotEnde() {
 		MainManager.end = false;
+	}
+
+	@Override
+	public Frame getFrame() {
+		return gameWindow.f;
 	}
 }
